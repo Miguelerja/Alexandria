@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import mapboxgl from 'mapbox-gl';
 
-mapboxgl.accessToken =;
+//mapboxgl.accessToken =;
 
 export default class Map extends Component {
 

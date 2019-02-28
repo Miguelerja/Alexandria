@@ -1,0 +1,8 @@
+.popup-menu {
+  position: absolute;
+  margin-top: 0;
+  background-color: grey;
+  width: 75vw;
+  height: 100vh;
+  box-shadow: 0 0 0.5em black;
+}

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../components/AuthProvider';
 import PopUpMenu from '../components/PopUpMenu';
+import '../styles/navbar.css';
+
 
 class Navbar extends Component {
 
@@ -23,13 +25,17 @@ class Navbar extends Component {
       });  
     }
   }
-  
-  
+
+  closeMenuDirty = () => {
+    this.setState({
+      showMenu: !this.state.showMenu,
+    })
+  }
 
   render() {
     return (
       <div>
-        <button onClick={this.showMenu}>
+        <button className="popup-menu-button button" onClick={this.showMenu}>
           Menu
         </button>
         {
@@ -41,7 +47,7 @@ class Navbar extends Component {
                   this.dropdownMenu = element;
                 }}
               >
-              <PopUpMenu props={this.props}/>
+              <PopUpMenu closeMenu={this.closeMenuDirty} props={this.props}/>
               </div>
             )
             : (

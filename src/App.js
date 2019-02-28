@@ -8,6 +8,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import AuthProvider from './components/AuthProvider';
 import Map from './components/Map';
+import addBookButton from './components/addBookButton';
 
 
 class App extends Component {
@@ -16,11 +17,7 @@ class App extends Component {
       <AuthProvider>
         <div className="container">
           <Navbar data='data' />
-          <Switch>
-            <AnonRoute path="/signup" component={Signup} />
-            <AnonRoute path="/login" component={Login} />
-            <PrivateRoute path="/private" component={Private} />
-          </Switch>
+          < PrivateRoute component={addBookButton} />
         </div>
       </AuthProvider>
     )

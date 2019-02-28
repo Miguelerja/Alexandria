@@ -1,0 +1,8 @@
+.add-book-button {
+  padding: 4rem;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  outline: 0;
+}
