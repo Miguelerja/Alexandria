@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../components/AuthProvider';
+import '../styles/signup.css';
+
 
 class Signup extends Component {
 
   state = {
     username: "",
+    email: "",
     password: "",
   };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
     const username = this.state.username;
+    const email = this.state.email;
     const password = this.state.password;
 
-    this.props.signup({ username, password })
+    this.props.signup({ username, email, password })
       .then( (user) => {
         this.setState({
             username: "",
+            email: "",
             password: "",
         });
       })
@@ -30,19 +35,19 @@ class Signup extends Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username, email, password } = this.state;
     return (
       <div>
-        <form onSubmit={this.handleFormSubmit}>
-          <label>Username:</label>
-          <input type="text" name="username" value={username} onChange={this.handleChange}/>
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
+        <form className="form signup-form" onSubmit={this.handleFormSubmit}>
+          {/* Username, e-mail and password input for signup */}
+          <input type="text" name="username" placeholder="Username" value={username} onChange={this.handleChange}/>
+          <input type="text" name="email" placeholder="E-mail" value={email} onChange={this.handleChange}/>
+          <input type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange} />
           <input type="submit" value="Signup" />
         </form>
 
         <p>Already have account? 
-          <Link to={"/login"}> Login</Link>
+          <Link to={"/login"}>Login</Link>
         </p>
 
       </div>

@@ -7,6 +7,7 @@ import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import AuthProvider from './components/AuthProvider';
+import Map from './components/Map';
 
 
 class App extends Component {
@@ -14,7 +15,6 @@ class App extends Component {
     return (
       <AuthProvider>
         <div className="container">
-          <h1>Basic React Authentication</h1>
           <Navbar data='data' />
           <Switch>
             <AnonRoute path="/signup" component={Signup} />

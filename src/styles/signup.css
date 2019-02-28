@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form input {
+  padding: 2rem;
+  font-size: 1.5rem;
+}
+
+.form input:not(:last-child) {
+  width: 75vw;
+}
