@@ -10,7 +10,6 @@ import AuthProvider from './components/AuthProvider';
 import Map from './components/Map';
 import addBookButton from './components/addBookButton';
 
-
 class App extends Component {
   render() {
     return (
@@ -18,6 +17,12 @@ class App extends Component {
         <div className="container">
           <Navbar data='data' />
           < PrivateRoute component={addBookButton} />
+          <Switch>
+            <AnonRoute path="/signup" component={Signup} />
+            <AnonRoute path="/login" component={Login} />
+            <PrivateRoute path="/private" component={Private} />
+          </Switch>
+          <Map />
         </div>
       </AuthProvider>
     )
