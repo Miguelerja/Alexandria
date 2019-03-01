@@ -9,7 +9,7 @@ import Login from './pages/Login';
 import AuthProvider from './components/AuthProvider';
 import Map from './components/Map';
 import addBookButton from './components/addBookButton';
-
+require ('dotenv').config();
 class App extends Component {
   render() {
     return (
