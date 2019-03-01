@@ -21,7 +21,6 @@ class Navbar extends Component {
   }
 
   closeMenu = (event) => {
-    console.log(this.state.element);
     if (!this.state.element.contains(event.target)) {
       this.setState({ showMenu: false }, () => {
         document.removeEventListener('click', this.closeMenu);
@@ -51,10 +50,14 @@ class Navbar extends Component {
         {
           this.state.showMenu
             ? (
-              < SlidingMenu handleClick={this.handleClick} isVisible={this.state.showMenu} receiveElement={this.receiveElement} props={this.props} />
+              < SlidingMenu handleClick={this.handleClick}
+                  isVisible={this.state.showMenu}
+                  receiveElement={this.receiveElement} props={this.props} />
             )
             : (
-              < SlidingMenu handleClick={this.handleClick} isVisible={this.state.showMenu} receiveElement={this.receiveElement} props={this.props} />
+              < SlidingMenu handleClick={this.handleClick} 
+                  isVisible={this.state.showMenu}
+                  receiveElement={this.receiveElement} props={this.props} />
             )
         }
     
