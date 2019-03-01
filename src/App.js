@@ -22,7 +22,9 @@ class App extends Component {
             <AnonRoute path="/login" component={Login} />
             <PrivateRoute path="/private" component={Private} />
           </Switch>
-          <Map />
+          <Map
+            token={process.env.REACT_APP_MAPBOX_TOKEN}
+          />
         </div>
       </AuthProvider>
     )
