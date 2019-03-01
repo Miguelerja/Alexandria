@@ -9,18 +9,18 @@ class BookService {
 
   create(book) {
     const { info, clue, coordinates } = book;
-    return this.book.post('alexandria/book', {info, clue, coordinates})
+    return this.book.post('http://localhost:5000/alexandria/book', {info, clue, coordinates})
       .then(({ data }) => data);
   }
   
   list() {
-    return this.book.get('/alexandria')
+    return this.book.get('http://localhost:5000/alexandria')
       .then(({ data }) => data);
   }
 
   edit(book) {
     const { id, strikes } = book;
-    return this.book.post(`/alexandria/book/${id}`, {strikes})
+    return this.book.post(`http://localhost:5000/alexandria/book/${id}`, {strikes})
       .then(response => response.data)
   }
 }

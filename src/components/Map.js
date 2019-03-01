@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
 import '../styles/map.css';
-import 'mapbox-gl/dist/mapbox-gl.css'
+import 'mapbox-gl/dist/mapbox-gl.css';
+import bookService from '../lib/book-service';
 
 export default class Map extends Component {
+    
 
   geolocate = new mapboxgl.GeolocateControl({
     positionOptions: {
@@ -25,6 +27,14 @@ export default class Map extends Component {
   }
 
   componentDidMount(){
+    bookService.list()
+    .then(booksList => {
+      console.log(booksList);
+      this.setState({
+        books: booksList,
+      });
+    }).catch(error => console.log(error));
+
     const { token } = this.props;
     const popup = new mapboxgl.Popup()
       .setHTML('<button>author</button>');
@@ -54,7 +64,7 @@ export default class Map extends Component {
 
   render(){
     return (
-      <div class='map' id='map'>
+      <div className='map' id='map'>
       </div>
     );
   }
