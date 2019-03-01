@@ -5,4 +5,5 @@
   bottom: 5px;
   right: 5px;
   outline: 0;
+  z-index: 100;
 }

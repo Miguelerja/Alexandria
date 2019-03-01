@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../components/AuthProvider';
 import PopUpMenu from '../components/PopUpMenu';
 import '../styles/navbar.css';
+import MenuButton from '../components/MenuButton';
+import SlidingMenu from '../components/SlidingMenu';
 
 
 class Navbar extends Component {
@@ -11,49 +13,23 @@ class Navbar extends Component {
     showMenu: false,
   }
 
-  showMenu = (event) => {
-    event.preventDefault();
-    this.setState({ showMenu: true }, () => {
-      document.addEventListener('click', this.closeMenu);
-    });
-  }
-  
-  closeMenu = (event) => {
-    if (!this.dropdownMenu.contains(event.target)) {
-      this.setState({ showMenu: false }, () => {
-        document.removeEventListener('click', this.closeMenu);
-      });  
-    }
-  }
-
-  closeMenuDirty = () => {
+  showMenu = () => {
     this.setState({
       showMenu: !this.state.showMenu,
     })
   }
 
+  handleClick = (e) => {
+    this.showMenu();
+ 
+    e.stopPropagation();
+  }
+
   render() {
     return (
       <div>
-        <button className="popup-menu-button button" onClick={this.showMenu}>
-          Menu
-        </button>
-        {
-          this.state.showMenu
-            ? (
-              <div
-                className="popup-menu"
-                ref={(element) => {
-                  this.dropdownMenu = element;
-                }}
-              >
-              <PopUpMenu closeMenu={this.closeMenuDirty} props={this.props}/>
-              </div>
-            )
-            : (
-              null
-            )
-        }
+        < MenuButton handleClick={this.handleClick} />
+        < SlidingMenu handleClick={this.handleClick} isVisible={this.state.showMenu} props={this.props} />
       </div>
     );
   }

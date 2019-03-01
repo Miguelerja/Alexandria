@@ -22,11 +22,13 @@ class PopUpMenu extends Component {
     const { username } = user;
     if (isLogged) {
       return <div className="popup-menu logged">
-        <p>{ username }'s Profile</p>
-        <Link to="/history" />
-        <p onClick={() => {
-          this.props.closeMenu()
-          logout()}}>Log out</p>
+        <div id="slide-menu">
+          <p>{ username }'s Profile</p>
+          <Link to="/history" />
+          <p onClick={() => {
+            this.props.closeMenu()
+            logout()}}>Log out</p>
+        </div>
       </div>
     } else {
       return <div className="popup-menu not-logged">
