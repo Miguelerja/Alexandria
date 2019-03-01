@@ -11,10 +11,15 @@ class Menu extends Component {
     hasAccount: true,
   }
 
-  handleClickAccount = () => {
+  handleClickAccount = (event) => {
     this.setState({
       hasAccount: !this.state.hasAccount,
     })
+    event.stopPropagation();
+  }
+
+  componentDidMount() {
+    this.props.receiveElement(this.dropdownMenu);
   }
 
   render() {
@@ -29,7 +34,7 @@ class Menu extends Component {
 
     if (isLogged) {
       return (
-        <div id="slidingMenu" onClick={this.props.handleClick} className={visible}>
+        <div id="slidingMenu" className={visible} ref={(element) => {this.dropdownMenu = element;}}>
           <p>{ username }'s Profile</p>
           <Link to="/history" />
           <p onClick={logout}>Log out</p>
@@ -37,7 +42,7 @@ class Menu extends Component {
       );
     } else {
       return (
-        <div id="slidingMenu" onClick={this.props.handleClick} className={visible}>
+        <div id="slidingMenu" className={visible} ref={(element) => {this.dropdownMenu = element}}>
           {this.state.hasAccount ? (
             <div>
               < Login />

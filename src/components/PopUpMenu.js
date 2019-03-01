@@ -22,7 +22,7 @@ class PopUpMenu extends Component {
     const { username } = user;
     if (isLogged) {
       return <div className="popup-menu logged">
-        <div id="slide-menu">
+        <div>
           <p>{ username }'s Profile</p>
           <Link to="/history" />
           <p onClick={() => {

@@ -13,23 +13,51 @@ class Navbar extends Component {
     showMenu: false,
   }
 
-  showMenu = () => {
-    this.setState({
-      showMenu: !this.state.showMenu,
-    })
+  showMenu = (event) => {
+    event.preventDefault();
+    this.setState({ showMenu: true }, () => {
+      document.addEventListener('click', this.closeMenu);
+    }); 
   }
 
-  handleClick = (e) => {
-    this.showMenu();
- 
-    e.stopPropagation();
+  closeMenu = (event) => {
+    console.log(this.state.element);
+    if (!this.state.element.contains(event.target)) {
+      this.setState({ showMenu: false }, () => {
+        document.removeEventListener('click', this.closeMenu);
+      });  
+    }
+  }
+
+  handleClick = (event) => {
+    if (this.state.showMenu === false) {
+      this.showMenu(event);
+    } else {
+      this.closeMenu(event);
+    }
+    event.stopPropagation();
+  }
+
+  receiveElement = (element) => {
+    this.setState({
+      element: element,
+    })
   }
 
   render() {
     return (
-      <div>
+      <div className="navbar">
         < MenuButton handleClick={this.handleClick} />
-        < SlidingMenu handleClick={this.handleClick} isVisible={this.state.showMenu} props={this.props} />
+        {
+          this.state.showMenu
+            ? (
+              < SlidingMenu handleClick={this.handleClick} isVisible={this.state.showMenu} receiveElement={this.receiveElement} props={this.props} />
+            )
+            : (
+              < SlidingMenu handleClick={this.handleClick} isVisible={this.state.showMenu} receiveElement={this.receiveElement} props={this.props} />
+            )
+        }
+    
       </div>
     );
   }
