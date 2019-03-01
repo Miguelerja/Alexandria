@@ -6,11 +6,15 @@ import Navbar from './components/Navbar';
 import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Book from './pages/Book';
 import AuthProvider from './components/AuthProvider';
 import Map from './components/Map';
 import addBookButton from './components/addBookButton';
+require ('dotenv').config();
 
 class App extends Component {
+
+  
   render() {
     return (
       <AuthProvider>
@@ -21,8 +25,11 @@ class App extends Component {
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
             <PrivateRoute path="/private" component={Private} />
+            <PrivateRoute path="/book/:id" component={Book} />
           </Switch>
-          <Map />
+          <Map
+            token={process.env.REACT_APP_MAPBOX_TOKEN}
+          />
         </div>
       </AuthProvider>
     )
