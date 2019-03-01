@@ -6,46 +6,28 @@ import bookService from '../lib/book-service';
 
 export default class Map extends Component {
     
-
   geolocate = new mapboxgl.GeolocateControl({
     positionOptions: {
         enableHighAccuracy: true
     },
     trackUserLocation: true
-});
-
-  listBooks = () => {
-    const books = this.props;
-
-    books.map(book => {
-      const popup = new mapboxgl.Popup()
-        .setHTML(
-          `<button>book.info.author</button>`
-          );
-      return
-    });
-  }
+  });
 
   componentDidMount(){
     bookService.list()
-    .then(booksList => {
-      console.log(booksList);
-      this.setState({
-        books: booksList,
-      });
+    .then(booksList => {this.setState({books: booksList});
     }).catch(error => console.log(error));
 
     const { token } = this.props;
-    const popup = new mapboxgl.Popup()
-      .setHTML('<button>author</button>');
+
     const mapConfig = {
       container: 'map',
       style: 'mapbox://styles/ajer/cjsp3c4s03rzb1gk4ocy4zckt',
       center: [41.39, 2.15], 
       zoom: 9,
     };
+
     mapboxgl.accessToken = token;
-    
     
     this.map = new mapboxgl.Map(mapConfig);
     
@@ -55,11 +37,6 @@ export default class Map extends Component {
       this.map.addControl(new mapboxgl.NavigationControl());
     });
 
-    this.marker = new mapboxgl.Marker()
-      .setLngLat([41.39, 2.15])
-      .addTo(this.map)
-      .setPopup(popup)
-      .togglePopup();
   }
 
   render(){
