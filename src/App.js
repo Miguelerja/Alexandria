@@ -9,7 +9,6 @@ import Login from './pages/Login';
 import AuthProvider from './components/AuthProvider';
 import Map from './components/Map';
 
-
 class App extends Component {
   render() {
     return (
@@ -21,6 +20,7 @@ class App extends Component {
             <AnonRoute path="/login" component={Login} />
             <PrivateRoute path="/private" component={Private} />
           </Switch>
+          <Map />
         </div>
       </AuthProvider>
     )

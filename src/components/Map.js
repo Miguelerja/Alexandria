@@ -1,32 +1,26 @@
-import React, { Component } from 'react'
-import mapboxgl from 'mapbox-gl';
+import React, { Component, PropTypes } from 'react';
+import MapboxGl from 'mapbox-gl/dist/mapbox-gl.js';
+import '../styles/map.css';
 
-mapboxgl.accessToken =;
-
-export default class Map extends Component {
+class Map extends Component {
 
   componentDidMount() {
-    this.map = new mapboxgl.Map({
-      container: this.mapContainer,
-      style: 'mapbox://styles/mapbox/streets-v9'
-    });
-  }
+    MapboxGl.accessToken = 'pk.eyJ1IjoiYWplciIsImEiOiJjanNvd3N3NzEwYWN3NDNtenJuZzF2NzQxIn0.IdZ59iukLwHQ_Ak0yK8Ymw'
 
-  componentWillUnmount() {
-    this.map.remove()
+    new MapboxGl.Map({
+      container: this.container,
+      style: 'mapbox://styles/ajer/cjsp3c4s03rzb1gk4ocy4zckt',
+      center: [2.188297, 41.388424],
+      zoom: 16.6,
+    })
   }
 
   render() {
-
-    const style = {
-      position: 'absolute',
-      top: 0,
-      bottom: 0,
-      width: '100%',
-    };
-    
     return (
-      <div style={style} ref={el => this.mapContainer = el} />
+      <div className='Map' ref={(x) => { this.container = x }}>
+      </div>
     )
   }
 }
+
+export default Map
