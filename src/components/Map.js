@@ -9,7 +9,7 @@ class Map extends Component {
 
     new MapboxGl.Map({
       container: this.container,
-      style: 'mapbox://styles/ajer/cjsp3c4s03rzb1gk4ocy4zckt',
+      style: 'mapbox://styles/mapbox/light-v9',
       center: [2.188297, 41.388424],
       zoom: 16.6,
     })
