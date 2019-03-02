@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
 import '../styles/map.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import ReactDOM from 'react-dom';
+import TestComponent from './TestComponent';
 
 export default class Map extends Component {
     
@@ -39,21 +41,39 @@ export default class Map extends Component {
             },
         },
         books.forEach(book => {
+
           const popup = new mapboxgl.Popup({
             closeButton: false,
             className: 'popup',
           })
-            .setHTML(`<button>${book.info.author}</button>`);
-  
-            new mapboxgl.Marker({
-              color:'red'
-            })
-              .setLngLat(book.location.coordinates)
-              .setPopup(popup)
-              .addTo(this.map);
+            .setHTML('');
+
+          const marker =  new mapboxgl.Marker({
+             color:'red'
+           })
+             .setLngLat(book.location.coordinates)
+             .setPopup(popup);
+
+           // marker.addTo(this.map)
+            const map = this.map;
+            marker.addTo(map);
+
+            document.querySelector('.mapboxgl-marker')
+              .addEventListener('mouseenter', () => {
+                if (!marker.getPopup().isOpen()) {
+                  marker.getPopup().addTo(map);
+                  ReactDOM.render(
+                    <TestComponent book={book} />,
+                    document.querySelector('.mapboxgl-popup-content')
+                  )
+                }
+            });
+             
         })
       );
     });
+
+    
 
     // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
     this.map.on('click', 'symbols', function (e) {
@@ -62,7 +82,7 @@ export default class Map extends Component {
   }
 
   render(){
-    const { books } = this.props;
+    //const { books } = this.props;
     return (
         <div className='map' id='map'></div>
     );

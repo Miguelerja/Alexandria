@@ -8,9 +8,11 @@
   color: #F3F3DD;
   background-color: #91785D !important;
   border-color: #91785D;
-  max-width: 250px;
+  width: 50vw !important;
+  height: 40vh !important;
   box-shadow: 3px 3px 2px #8B5D33 !important;
   font-family: 'Oswald';
+  padding: 0 !important;
 }
 
 .mapboxgl-popup-tip {

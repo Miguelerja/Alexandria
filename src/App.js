@@ -25,6 +25,10 @@ class App extends Component {
     }).catch(error => console.log(error));
   }
 
+  showBook = () => {
+    
+  }
+
   render() {
     const { books } = this.state;
     return (
@@ -42,6 +46,7 @@ class App extends Component {
           {(books.length !== 0) ? <Map
             books={this.state.books}
             token={process.env.REACT_APP_MAPBOX_TOKEN}
+            showBook={this.showBook}
           />
           : null}
         </div>
