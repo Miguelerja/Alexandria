@@ -17,13 +17,13 @@ require ('dotenv').config();
 class App extends Component {
   state={
     books: [],
-  }
+  };
 
   componentDidMount(){
     bookService.list()
     .then(booksList => {this.setState({books: booksList});
     }).catch(error => console.log(error));
-  }
+  };
 
   showBook = () => {
     

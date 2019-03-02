@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import '../styles/menuButton.css';
 
 export default class MenuButton extends Component {
   render() {
     return (
-      <button onClick={this.props.handleClick}>
-        Menu
-      </button>
+      <div className="menu-button" onClick={this.props.handleClick}></div>
     )
   }
 }

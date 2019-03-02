@@ -18,6 +18,10 @@ class BookService {
       .then(({ data }) => data);
   }
 
+  find(criteria) {
+    return this.book.get(`http://localhost:5000/alexandria?${criteria}=${criteria}`)
+  }
+
   edit(book) {
     const { id, strikes } = book;
     return this.book.post(`http://localhost:5000/alexandria/book/${id}`, {strikes})

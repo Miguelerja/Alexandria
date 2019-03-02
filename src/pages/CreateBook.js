@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
 import bookService from '../lib/book-service';
-
+import transactionService from '../lib/transaction-service';
+import '../styles/createbook.css';
 class CreateBook extends Component {
 
   state={};
+
+  handleBooksListUpdate = (data) => {
+  };
 
   handleFormSubmit = (event) => {
     const { title, author, synopsis, story, clue } = this.state;
@@ -22,10 +26,19 @@ class CreateBook extends Component {
         coordinates: coordinates,
       }
     };
-    console.log(book);
     bookService.create(book)
-      .then(book => {
-        console.log(book);
+      .then((book) => {
+        const bookId = book.response._id;
+        const userThatFrees = this.props.user._id;
+        const transaction = {
+          bookId,
+          userThatFrees,
+        };
+
+        transactionService.create(transaction)
+          .then(transaction => console.log(transaction))
+          .catch(error => console.log(error));
+
         this.setState({
           title: '',
           author: '',
@@ -34,8 +47,8 @@ class CreateBook extends Component {
           clue: '',
           coordinates: [],
         });
-      })
-      .catch(error => console.log(error));
+      }).catch(error => console.log(error));
+    
     event.preventDefault();
   };
 
@@ -47,13 +60,13 @@ class CreateBook extends Component {
   render() {
     const { author, title, synopsis, story, clue } = this.state;
     return (
-      <div>
-        <input type="text" name="title" placeholder="Book title" value={title} onChange={this.handleChange}/>
-        <input type="text" name="author" placeholder="Author" value={author} onChange={this.handleChange}/>
-        <input type="text" name="synopsis" placeholder="Synopsis" value={synopsis} onChange={this.handleChange}/>
-        <input type="text" name="story" placeholder="Your story" value={story} onChange={this.handleChange}/>
-        <input type="text" name="clue" placeholder="Clue" value={clue} onChange={this.handleChange} />
-        <input type="submit" value="Create" onClick={this.handleFormSubmit} />
+      <div className="form">
+        <input className="input text-input" type="text" name="title" placeholder="Book title" value={title} onChange={this.handleChange}/>
+        <input className="input text-input" type="text" name="author" placeholder="Author" value={author} onChange={this.handleChange}/>
+        <input className="input text-input" type="text" name="synopsis" placeholder="Synopsis" value={synopsis} onChange={this.handleChange}/>
+        <input className="input text-input" type="text" name="story" placeholder="Your story" value={story} onChange={this.handleChange}/>
+        <input className="input text-input" type="text" name="clue" placeholder="Clue" value={clue} onChange={this.handleChange} />
+        <input className="input button" type="submit" value="Create" onClick={this.handleFormSubmit} />
       </div>
     )
   }
