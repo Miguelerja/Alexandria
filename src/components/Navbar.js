@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { withAuth } from '../components/AuthProvider';
 import PopUpMenu from '../components/PopUpMenu';
 import '../styles/navbar.css';
+import MenuButton from '../components/MenuButton';
+import SlidingMenu from '../components/SlidingMenu';
 
 
 class Navbar extends Component {
@@ -15,45 +17,50 @@ class Navbar extends Component {
     event.preventDefault();
     this.setState({ showMenu: true }, () => {
       document.addEventListener('click', this.closeMenu);
-    });
+    }); 
   }
-  
+
   closeMenu = (event) => {
-    if (!this.dropdownMenu.contains(event.target)) {
+    if (!this.state.element.contains(event.target)) {
       this.setState({ showMenu: false }, () => {
         document.removeEventListener('click', this.closeMenu);
       });  
     }
   }
 
-  closeMenuDirty = () => {
+  handleClick = (event) => {
+    if (this.state.showMenu === false) {
+      this.showMenu(event);
+    } else {
+      this.closeMenu(event);
+    }
+    event.stopPropagation();
+  }
+
+  receiveElement = (element) => {
     this.setState({
-      showMenu: !this.state.showMenu,
+      element: element,
     })
   }
 
   render() {
     return (
-      <div>
-        <button className="popup-menu-button button" onClick={this.showMenu}>
-          Menu
-        </button>
+      <div className="navbar">
+        < MenuButton handleClick={this.handleClick} />
         {
           this.state.showMenu
             ? (
-              <div
-                className="popup-menu"
-                ref={(element) => {
-                  this.dropdownMenu = element;
-                }}
-              >
-              <PopUpMenu closeMenu={this.closeMenuDirty} props={this.props}/>
-              </div>
+              < SlidingMenu handleClick={this.handleClick}
+                  isVisible={this.state.showMenu}
+                  receiveElement={this.receiveElement} props={this.props} />
             )
             : (
-              null
+              < SlidingMenu handleClick={this.handleClick} 
+                  isVisible={this.state.showMenu}
+                  receiveElement={this.receiveElement} props={this.props} />
             )
         }
+    
       </div>
     );
   }

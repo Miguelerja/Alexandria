@@ -7,6 +7,7 @@ import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Book from './pages/Book';
+import CreateBook from './pages/CreateBook';
 import AuthProvider from './components/AuthProvider';
 import Map from './components/Map';
 import addBookButton from './components/addBookButton';
@@ -36,6 +37,7 @@ class App extends Component {
             <AnonRoute path="/login" component={Login} />
             <PrivateRoute path="/private" component={Private} />
             <PrivateRoute path="/book/:id" component={Book} />
+            <PrivateRoute exact path="/book/create" component={CreateBook} />
           </Switch>
           {(books.length !== 0) ? <Map
             books={this.state.books}

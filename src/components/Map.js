@@ -19,11 +19,11 @@ export default class Map extends Component {
 
     const mapConfig = {
       container: 'map',
-      style: 'mapbox://styles/ajer/cjsp3c4s03rzb1gk4ocy4zckt',
+      style: 'mapbox://styles/ajer/cjsqedagl1fb51fnvxopap6mz',
       center: [2.15, 41.39], 
       zoom: 9,
     };
-
+    
     mapboxgl.accessToken = token;
     
     this.map = new mapboxgl.Map(mapConfig);
@@ -33,7 +33,7 @@ export default class Map extends Component {
       this.map.addControl(this.geolocate);
       this.map.addControl(new mapboxgl.NavigationControl())
       books.forEach(book => {
-        const popup = new mapboxgl.Popup()
+        const popup = new mapboxgl.Popup({closeButton: false})
           .setHTML(`<button>${book.info.author}</button>`);
 
           new mapboxgl.Marker({name: 'a',anchor: 'center', color:'red'})
@@ -42,6 +42,11 @@ export default class Map extends Component {
             .addTo(this.map);
       })
     });
+
+    // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
+    this.map.on('click', 'symbols', function (e) {
+      this.map.flyTo({center: e.features[0].geometry.coordinates});
+      });
   }
 
   render(){

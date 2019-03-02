@@ -1,7 +1,6 @@
-.popup-menu-button {
-  position: absolute;
+.navbar {
+  position: fixed;
   padding: 2rem;
-  background-color: grey;
   border-style: none;
-  z-index: 100;
+  z-index: 1000;
 }
