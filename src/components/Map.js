@@ -31,16 +31,36 @@ export default class Map extends Component {
     this.map.on('load', () => {
       // Add geolocate control to the map.
       this.map.addControl(this.geolocate);
-      this.map.addControl(new mapboxgl.NavigationControl())
-      books.forEach(book => {
-        const popup = new mapboxgl.Popup({closeButton: false})
-          .setHTML(`<button>${book.info.author}</button>`);
+      this.map.addLayer(
+        {
+          id: "symbols",
+          type: "symbol",
+          layout: {
+            'icon-image': "book",
+            },
+        },
+        books.forEach(book => {
 
-          new mapboxgl.Marker({name: 'a',anchor: 'center', color:'red'})
-            .setLngLat(book.location.coordinates)
-            .setPopup(popup)
-            .addTo(this.map);
-      })
+          var markerDiv = document.createElement('div');
+          markerDiv.className = 'marker';
+          markerDiv.style.backgroundImage = 'url(https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Ficons.iconarchive.com%2Ficons%2Fpaomedia%2Fsmall-n-flat%2F512%2Fcat-icon.png&f=1)';
+          markerDiv.style.width = '20px';
+          markerDiv.style.height = '20px';
+
+          const popup = new mapboxgl.Popup({
+            closeButton: false,
+            className: 'popup',
+          })
+            .setHTML(`<button>${book.info.author}</button>`);
+  
+            new mapboxgl.Marker({
+              color:'red'
+            })
+              .setLngLat(book.location.coordinates)
+              .setPopup(popup)
+              .addTo(this.map);
+        })
+      );
     });
 
     // Center the map on the coordinates of any clicked symbol from the 'symbols' layer.
