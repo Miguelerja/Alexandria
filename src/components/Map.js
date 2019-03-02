@@ -14,7 +14,10 @@ export default class Map extends Component {
 
   componentDidMount(){
     const { token, books } = this.props;
-
+    const geojson = {
+      "type": "FeatureCollection",
+      "features": []
+    };
     const mapConfig = {
       container: 'map',
       style: 'mapbox://styles/ajer/cjsqedagl1fb51fnvxopap6mz',
