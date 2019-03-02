@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import mapboxgl from 'mapbox-gl';
 import '../styles/map.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -40,13 +39,6 @@ export default class Map extends Component {
             },
         },
         books.forEach(book => {
-
-          var markerDiv = document.createElement('div');
-          markerDiv.className = 'marker';
-          markerDiv.style.backgroundImage = 'url(https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Ficons.iconarchive.com%2Ficons%2Fpaomedia%2Fsmall-n-flat%2F512%2Fcat-icon.png&f=1)';
-          markerDiv.style.width = '20px';
-          markerDiv.style.height = '20px';
-
           const popup = new mapboxgl.Popup({
             closeButton: false,
             className: 'popup',

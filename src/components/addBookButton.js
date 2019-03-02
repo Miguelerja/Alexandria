@@ -10,7 +10,16 @@ class AddBookButton extends Component {
     showMenu: false,
   }
 
+  setCoordinates = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.setState({
+        coordinates: [position.coords.longitude, position.coords.latitude]
+      }) 
+    })
+  };
+
   handleClick = () => {
+    this.setCoordinates();
     this.setState({
       showMenu: !this.state.showMenu,
     })
@@ -26,6 +35,7 @@ class AddBookButton extends Component {
             ? (
               < CreateBook handleClick={this.handleClick}
                   isVisible={this.state.showMenu}
+                  coordinates={this.state.coordinates}
                   props={this.props} />
             )
             : (

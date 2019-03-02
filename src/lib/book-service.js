@@ -8,8 +8,8 @@ class BookService {
   }
 
   create(book) {
-    const { info, clue, coordinates } = book;
-    return this.book.post('http://localhost:5000/alexandria/book', {info, clue, coordinates})
+    const { info, clue, location } = book;
+    return this.book.post('http://localhost:5000/alexandria/book', {info, clue, location})
       .then(({ data }) => data);
   }
   
