@@ -6,6 +6,9 @@ class CreateBook extends Component {
 
   state={};
 
+  handleBooksListUpdate = (data) => {
+  };
+
   handleFormSubmit = (event) => {
     const { title, author, synopsis, story, clue } = this.state;
     const { coordinates } = this.props;
@@ -22,10 +25,9 @@ class CreateBook extends Component {
         coordinates: coordinates,
       }
     };
-    console.log(book);
     bookService.create(book)
-      .then(book => {
-        console.log(book);
+      .then((book) => {
+        console.log(book.response);
         this.setState({
           title: '',
           author: '',
@@ -36,6 +38,9 @@ class CreateBook extends Component {
         });
       })
       .catch(error => console.log(error));
+    
+
+    
     event.preventDefault();
   };
 

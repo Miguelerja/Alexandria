@@ -13,8 +13,7 @@ export default class Map extends Component {
   });
 
   componentDidMount(){
-    const { token } = this.props;
-    const{ books } = this.props;
+    const { token, books } = this.props;
 
     const mapConfig = {
       container: 'map',
@@ -62,7 +61,6 @@ export default class Map extends Component {
   }
 
   render(){
-    const { books } = this.props;
     return (
         <div className='map' id='map'></div>
     );
