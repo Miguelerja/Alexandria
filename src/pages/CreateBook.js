@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
 import bookService from '../lib/book-service';
+import transactionService from '../lib/transaction-service';
 
 class CreateBook extends Component {
 
@@ -27,7 +28,16 @@ class CreateBook extends Component {
     };
     bookService.create(book)
       .then((book) => {
-        console.log(book.response);
+        const bookId = book.response._id;
+        const userThatFrees = this.props.user._id;
+        const transaction = {
+          bookId,
+          userThatFrees,
+        };
+        transactionService.create(transaction)
+          .then(transaction => console.log(transaction))
+          .catch(error => console.log(error));
+
         this.setState({
           title: '',
           author: '',
@@ -37,9 +47,10 @@ class CreateBook extends Component {
           coordinates: [],
         });
       })
+      .then(() => {
+        
+      })
       .catch(error => console.log(error));
-    
-
     
     event.preventDefault();
   };

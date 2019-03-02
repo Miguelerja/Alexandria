@@ -8,20 +8,14 @@ class TransactionService {
   }
 
   create(transaction) {
-    const { userThatFrees, bookId } = transaction;
-    return this.transaction.post('http://localhost:5000/transaction/new', {userThatFrees, bookId})
+    const { bookId, userThatFrees } = transaction;
+    return this.transaction.post('http://localhost:5000/transaction/new', {bookId, userThatFrees})
       .then(({ data }) => data);
   }
   
   list() {
     return this.transaction.get('http://localhost:5000/')
       .then(({ data }) => data);
-  }
-
-  edit(transaction) {
-    const { id, strikes } = transaction;
-    return this.transaction.post(`http://localhost:5000/transaction/transaction/${id}`, {strikes})
-      .then(response => response.data)
   }
 }
 
