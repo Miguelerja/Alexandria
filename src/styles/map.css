@@ -8,15 +8,14 @@
   color: #F3F3DD;
   background-color: #91785D !important;
   border-color: #91785D;
-  width: 50vw !important;
-  height: 40vh !important;
-  box-shadow: 3px 3px 2px #8B5D33 !important;
+  width: 55vw !important;
+  height: 30vh !important;
   font-family: 'Oswald';
   padding: 0 !important;
 }
 
 .mapboxgl-popup-tip {
-  border-top-color: #91785D !important;
+  border-top-color: #91785D !important; 
 }
 
 .marker-icon{

@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import bookService from '../lib/book-service';
+import '../styles/popupcard.css';
 
 export default class PopupCard extends Component {
 
   state = {
-    captured: false,
+    showCaptureMenu: false,
   }
 
-  handleCapture = () => {
-    this.setState({
-      captured: !this.state.captured,
-    })
+  showCaptureMenu = () => {
+    this.setState({ showCaptureMenu: !this.state.showCaptureMenu, });
+  }
+
+  handleClickCapture = (event) => {
+    this.showCaptureMenu();
+    event.stopPropagation();
   }
 
   handleChange = (event) => {
@@ -27,16 +31,22 @@ export default class PopupCard extends Component {
     
   }
 
+  shouldComponentUpdate() {
+    return true
+  }
+
   render() {
     const { title, author, synopsis } = this.props.book.info;
     return (
-      <div>
-        <h1>{title}</h1>
-        <p>{author}</p>
-        <p>{synopsis}</p>
-        <button onClick={this.handleCapture}>Capture</button>
-        {(this.state.captured ? 
-        <div>
+      <div className="popup-card-content-container">
+        <div className="typewriter">
+          <h1>{title}</h1>
+        </div>
+        <span>{author}</span>
+        <span>{synopsis}</span>
+        <button onClick={this.handleClickCapture}>Capture</button>
+        {(this.state.showCaptureMenu ? 
+        <div className="book-capture-input-container" ref={(element) => {this.captureMenu = element;}}>
           <input 
             type="text"
             name="code" 
@@ -44,7 +54,7 @@ export default class PopupCard extends Component {
             value={this.state.bookCode}
             placeholder="Enter book code"
           />
-          <button onclick={this.handleBookCodeInput}>Enter code</button>
+          <button onClick={this.handleBookCodeInput}>Enter code</button>
         </div>
         :
         <button onClick={this.handleLoss}>Declare it lost</button>

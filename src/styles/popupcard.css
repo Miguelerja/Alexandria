@@ -1,0 +1,59 @@
+.popup-card-content-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 20% 10% 40% 30%;
+  height: 100%;
+}
+
+.popup-card-content-container .typewriter {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.typewriter h1 {
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0.4rem 0.1rem 0.4rem 0.1rem;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 2.5s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+.popup-card-content-container span:not(:last-child) {
+  display: block;
+  margin-top: 0;
+  width: 100%;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.popup-card-content-container button {
+  padding: 0.5rem;
+  background-color: yellow;
+  width: 100%;
+  margin-bottom: 0;
+  height: 100%;
+}
+
+.book-capture-input-container {
+  position: absolute;
+  padding-top: 20%;
+}

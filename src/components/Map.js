@@ -37,12 +37,15 @@ export default class Map extends Component {
       books.forEach(book => {
         const markerDiv = document.createElement('div');
         markerDiv.className = 'marker-icon';
+        markerDiv.setAttribute('id', `marker-icon-${book._id}`);
+        let popupContent = document.createElement('div');
+        popupContent.setAttribute('id', `popup-inner-cont-${book._id}`);
 
         const popup = new mapboxgl.Popup({
           closeButton: false,
           className: 'popup',
         })
-        .setHTML('');
+        .setDOMContent(popupContent);
 
         const marker = new mapboxgl.Marker({
           element: markerDiv,
@@ -54,12 +57,14 @@ export default class Map extends Component {
         const map = this.map;
         marker.addTo(map);
 
-        document.querySelector('.mapboxgl-marker')
-          .addEventListener('mouseenter', () => {
+        console.log(marker);
+
+        document.getElementById(`marker-icon-${book._id}`)
+          .addEventListener('mouseenter', (event) => {
             if (!marker.getPopup().isOpen()) {
               marker.getPopup().addTo(map);
               ReactDOM.render( <PopupCard book = { book }/>,
-                document.querySelector('.mapboxgl-popup-content')
+                document.getElementById(`popup-inner-cont-${book._id}`)
               )
             }
           });
