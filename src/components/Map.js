@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
 import '../styles/map.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import ReactDOM from 'react-dom';
-import PopupCard from './PopupCard';
 import { withAuth } from '../components/AuthProvider';
 import { withBooks } from '../components/BookProvider';
+import { popUpCreator } from '../functions/popUpCreator';
 
 class Map extends Component {
 
   state = {
     isLoggedIn: false,
+    books: this.props.books,
   }
 
   geolocate = new mapboxgl.GeolocateControl({
@@ -39,55 +39,20 @@ class Map extends Component {
       // Add geolocate control to the map.
       this.map.addControl(this.geolocate);
 
-
-        books.forEach(book => {
-          const markerDiv = document.createElement('div');
-          markerDiv.className = 'marker-icon';
-          markerDiv.setAttribute('id', `marker-icon-${book._id}`);
-          let popupContent = document.createElement('div');
-          popupContent.setAttribute('id', `popup-inner-cont-${book._id}`);
-
-          const popup = new mapboxgl.Popup({
-            closeButton: false,
-            className: 'popup',
-          })
-          .setDOMContent(popupContent);
-
-          const marker = new mapboxgl.Marker({
-            element: markerDiv,
-          })
-          .setLngLat(book.location.coordinates)
-          .setPopup(popup);
-
-          const map = this.map;
-          marker.addTo(map);
-
-          console.log(marker);
-
-          document.getElementById(`marker-icon-${book._id}`)
-            .addEventListener('mouseenter', (event) => {
-              if (!marker.getPopup().isOpen()) {
-                marker.getPopup().addTo(map);
-                ReactDOM.render( <PopupCard book = { book } cardId={`popup-inner-cont-${book._id}`}/>,
-                  document.getElementById(`popup-inner-cont-${book._id}`)
-                )
-              }
-            });
-        });
+      books.forEach(book => {
+        popUpCreator(book, this.map);
+      });
     });
   }
 
   componentWillReceiveProps(prevProps) {
-    if(JSON.stringify(this.props.isLogged) !== JSON.stringify(prevProps.isLogged)) {
-      this.setState({
-        isLoggedIn: !this.state.isLoggedIn,
-      })
+    if(JSON.stringify(this.props.books) !== JSON.stringify(prevProps.books)) {
+      console.log(this.props.books);
     }
   }
 
   render() {
-    const { isLoggedIn } = this.state;
-    return (isLoggedIn) ? <div className='map' id='map'></div> : <div className='map' id='map'></div>
+    return <div ref={element => this.mapbox = element} className='map' id='map'></div>
   }
 }
 
