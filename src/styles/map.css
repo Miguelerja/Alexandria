@@ -18,3 +18,9 @@
 .mapboxgl-popup-tip {
   border-top-color: #91785D !important;
 }
+
+.marker-icon{
+  height: 1.5rem;
+  width: 1.5rem;
+  background-image: url('/images/open-book.svg') ;
+}
