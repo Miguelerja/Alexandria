@@ -17,6 +17,10 @@ class TransactionService {
     return this.transaction.get('http://localhost:5000/')
       .then(({ data }) => data);
   }
+  find(userId) {
+    return this.transaction.get(`http://localhost:5000/?${userId}=${userId}`)
+      .then(({ data }) => data);
+  }
 }
 
 const transactionService = new TransactionService();

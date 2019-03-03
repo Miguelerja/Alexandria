@@ -20,11 +20,26 @@ export default class PopupCard extends Component {
   }
 
   handleBookCodeInput = () => {
-
+    const { code } = this.state;
+    const { _id } = this.props.book;
+    const book = {
+      id: _id,
+      code: code,
+    };
+    bookService.capture(book)
+    .then((book) => console.log(book))
+    .catch(error => console.log(error));
   }
 
-  handleLoss = () => {
-    
+  handleLoss = () => { // TODO Not working error 404
+    const { _id } = this.props.book;
+    const book = {
+      id: _id,
+      strikes: 1,
+    };
+    bookService.setStrikes(book)
+    .then((book) => console.log(book))
+    .catch(error => console.log(error));
   }
 
   render() {
@@ -44,7 +59,7 @@ export default class PopupCard extends Component {
             value={this.state.bookCode}
             placeholder="Enter book code"
           />
-          <button onclick={this.handleBookCodeInput}>Enter code</button>
+          <button onClick={this.handleBookCodeInput}>Enter code</button>
         </div>
         :
         <button onClick={this.handleLoss}>Declare it lost</button>

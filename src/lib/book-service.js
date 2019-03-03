@@ -20,11 +20,18 @@ class BookService {
 
   find(criteria) {
     return this.book.get(`http://localhost:5000/alexandria?${criteria}=${criteria}`)
+    .then(({ data }) => data);
   }
 
-  edit(book) {
+  setStrikes(book) {
     const { id, strikes } = book;
-    return this.book.post(`http://localhost:5000/alexandria/book/${id}`, {strikes})
+    return this.book.put(`http://localhost:5000/alexandria/book/${id}`, {strikes})
+      .then(response => response.data)
+  }
+
+  capture(book) {
+    const { id, code } = book;
+    return this.book.put(`http://localhost:5000/alexandria/bookCode/${code}`, {id})
       .then(response => response.data)
   }
 }
