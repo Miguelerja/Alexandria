@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import bookService from '../lib/book-service';
 import '../styles/popupcard.css';
 import transactionService from '../lib/transaction-service';
+import ReactDOM from 'react-dom';
 
 
-export default class PopupCard extends Component {
+class PopupCard extends Component {
 
   state = {
     showCaptureMenu: false,
@@ -50,6 +51,7 @@ export default class PopupCard extends Component {
     };
     bookService.setStrikes(book)
     .then((book) => console.log(book))
+    .then((book) => ReactDOM.unmountComponentAtNode(document.getElementById(this.props.cardId)))
     .catch(error => console.log(error));
   }
 
@@ -82,3 +84,5 @@ export default class PopupCard extends Component {
     )
   }
 }
+
+export default PopupCard;

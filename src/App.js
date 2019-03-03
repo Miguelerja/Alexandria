@@ -6,37 +6,24 @@ import Navbar from './components/Navbar';
 import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Book from './pages/Book';
 import CreateBook from './pages/CreateBook';
 import AuthProvider from './components/AuthProvider';
 import Map from './components/Map';
 import Story from './components/Story';
 import addBookButton from './components/addBookButton';
 import bookService from './lib/book-service';
+import { withBooks } from './components/BookProvider';
 require ('dotenv').config();
 
 class App extends Component {
-  state={
-    books: [],
-  };
-
-  componentDidMount(){
-    bookService.list()
-    .then(booksList => {this.setState({books: booksList});
-    }).catch(error => console.log(error));
-  };
-
-  showBook = () => {
-    
-  }
 
   render() {
-    const { books } = this.state;
     return (
       <AuthProvider>
         <div className="container">
           <Navbar data='data' />
-          < PrivateRoute component={addBookButton} />
+          <PrivateRoute component={addBookButton} />
+          <PrivateRoute component={Map} />
           <Switch>
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
@@ -44,12 +31,6 @@ class App extends Component {
             <PrivateRoute exact path="/book/create" component={CreateBook} />
             <PrivateRoute path="/book/:id" component={Story} />
           </Switch>
-          {(books.length !== 0) ? <Map
-            books={this.state.books}
-            token={process.env.REACT_APP_MAPBOX_TOKEN}
-            showBook={this.showBook}
-          />
-          : null}
         </div>
       </AuthProvider>
     )
