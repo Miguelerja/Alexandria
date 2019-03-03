@@ -24,7 +24,7 @@ export default class PopupCard extends Component {
   }
 
   handleLoss = () => {
-
+    
   }
 
   render() {
