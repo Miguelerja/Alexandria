@@ -53,7 +53,6 @@ export default class Map extends Component {
         .setLngLat(book.location.coordinates)
         .setPopup(popup);
 
-        // marker.addTo(this.map)
         const map = this.map;
         marker.addTo(map);
 

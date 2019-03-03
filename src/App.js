@@ -10,6 +10,7 @@ import Book from './pages/Book';
 import CreateBook from './pages/CreateBook';
 import AuthProvider from './components/AuthProvider';
 import Map from './components/Map';
+import Story from './components/Story';
 import addBookButton from './components/addBookButton';
 import bookService from './lib/book-service';
 require ('dotenv').config();
@@ -40,8 +41,8 @@ class App extends Component {
             <AnonRoute path="/signup" component={Signup} />
             <AnonRoute path="/login" component={Login} />
             <PrivateRoute path="/private" component={Private} />
-            <PrivateRoute path="/book/:id" component={Book} />
             <PrivateRoute exact path="/book/create" component={CreateBook} />
+            <PrivateRoute path="/book/:id" component={Story} />
           </Switch>
           {(books.length !== 0) ? <Map
             books={this.state.books}

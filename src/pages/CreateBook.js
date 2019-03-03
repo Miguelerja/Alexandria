@@ -28,11 +28,17 @@ class CreateBook extends Component {
     };
     bookService.create(book)
       .then((book) => {
+        console.log('whole book', book);
+        console.log('book code', book.code)
         const bookId = book.response._id;
+        const { location } = book.response;
+        const { story } = book.response.info;
         const userThatFrees = this.props.user._id;
         const transaction = {
           bookId,
           userThatFrees,
+          location,
+          story,
         };
 
         transactionService.create(transaction)
