@@ -1,11 +1,9 @@
-import React, {
-  Component
-} from 'react';
+import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
 import '../styles/map.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import ReactDOM from 'react-dom';
-import TestComponent from './TestComponent';
+import PopupCard from './PopupCard';
 
 export default class Map extends Component {
 
@@ -36,41 +34,36 @@ export default class Map extends Component {
       // Add geolocate control to the map.
       this.map.addControl(this.geolocate);
 
-        books.forEach(book => {
-          const markerDiv = document.createElement('div');
-          markerDiv.className = 'marker-icon';
+      books.forEach(book => {
+        const markerDiv = document.createElement('div');
+        markerDiv.className = 'marker-icon';
 
-          const popup = new mapboxgl.Popup({
-              closeButton: false,
-              className: 'popup',
-            })
-            .setHTML('');
+        const popup = new mapboxgl.Popup({
+          closeButton: false,
+          className: 'popup',
+        })
+        .setHTML('');
 
-          const marker = new mapboxgl.Marker({
-              color: 'red',
-              element: markerDiv,
-            })
-            .setLngLat(book.location.coordinates)
-            .setPopup(popup);
+        const marker = new mapboxgl.Marker({
+          element: markerDiv,
+        })
+        .setLngLat(book.location.coordinates)
+        .setPopup(popup);
 
-          // marker.addTo(this.map)
-          const map = this.map;
-          marker.addTo(map);
+        // marker.addTo(this.map)
+        const map = this.map;
+        marker.addTo(map);
 
-          document.querySelector('.mapboxgl-marker')
-            .addEventListener('mouseenter', () => {
-              if (!marker.getPopup().isOpen()) {
-                marker.getPopup().addTo(map);
-                ReactDOM.render( <
-                  TestComponent book = {
-                    book
-                  }
-                  />,
-                  document.querySelector('.mapboxgl-popup-content')
-                )
-              }
-            });
+        document.querySelector('.mapboxgl-marker')
+          .addEventListener('mouseenter', () => {
+            if (!marker.getPopup().isOpen()) {
+              marker.getPopup().addTo(map);
+              ReactDOM.render( <PopupCard book = { book }/>,
+                document.querySelector('.mapboxgl-popup-content')
+              )
+            }
           });
+        });
     });
   }
 
