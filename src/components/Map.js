@@ -61,7 +61,6 @@ class Map extends Component {
         }
 
     const mutationObserver = new MutationObserver(mutations => {
-          console.log(this.state.nodeList)
           mutations.forEach(mutation => {
               const newNodes = mutation.addedNodes;
               newNodes.forEach(node => {
@@ -84,7 +83,7 @@ class Map extends Component {
 
   render() {
     const nodeList = [...this.state.nodeList];
-    const portals = (nodeList.length > 0) ? nodeList.map((node, i) =>
+    const portal = (nodeList.length > 0) ? nodeList.map((node, i) =>
         (
             <PopUpPortal key={i} node={node}>
               <div>
@@ -96,7 +95,7 @@ class Map extends Component {
     ) : null;
     return <div>
       <div className='map' id='map'></div>
-      {portals}
+      {portal}
     </div>
   }
 }

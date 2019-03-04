@@ -36,7 +36,6 @@ class BookProvider extends Component {
     this.statusFlipper();
     bookService.list()
       .then(booksList => {
-        console.log('updating books');
         const newBooks = booksList;
         this.setState({
           books: newBooks,
