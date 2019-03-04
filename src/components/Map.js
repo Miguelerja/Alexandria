@@ -20,8 +20,12 @@ class Map extends Component {
     trackUserLocation: true
   });
 
+  handleUpdateBooks = () => {
+    console.log(this.props);
+    this.props.updateBooks();
+  }
+
   componentDidMount() {
-    console.log(this.props)
     const {
       books
     } = this.props;
@@ -53,7 +57,7 @@ class Map extends Component {
   }
 
   render() {
-    return <div ref={element => this.mapbox = element} className='map' id='map'></div>
+    return <div><button className="buttonUpdate" onClick={this.handleUpdateBooks}>button</button><div ref={element => this.mapbox = element} className='map' id='map'></div></div>
   }
 }
 

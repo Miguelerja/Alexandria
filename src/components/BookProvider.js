@@ -2,11 +2,9 @@ import React, { Component } from 'react'
 import bookService from '../lib/book-service'
 import { withRouter } from "react-router";
 
-const bookStore = [];
 
 export const BookContext = React.createContext(
   // bookStore // default value
-  bookStore,
 );
 
 export const { Provider, Consumer } = BookContext;
@@ -31,31 +29,37 @@ export const withBooks = (Comp) => {
 class BookProvider extends Component {
   state = {
     books: [],
-    status: 'loading',
+    status: false,
   }
 
-  updateBooks = (newBook) => {
-    const newState = { books: [...this.state.books].push(newBook)}
-    this.setState({
-      newState
-    })
+  updateBooks = () => {
+    this.statusFlipper();
+    bookService.list()
+      .then(booksList => {
+        console.log('updating books');
+        const newBooks = booksList
+        this.setState({
+          books: newBooks,
+          status: true,
+        });
+    }).catch(error => console.log(error));
   }
 
   componentDidMount() {
-    bookService.list()
-      .then(booksList => {
-        this.setState({
-          books: booksList,
-          status: 'loaded',
-        });
-    }).catch(error => console.log(error));
+    this.updateBooks()
+  }
+
+  statusFlipper = () => {
+    this.setState({
+      status: false,
+    })
   }
 
   render() {
     const { books, status } = this.state;
     const { children } = this.props;
     switch (status) {
-      case 'loading':
+      case false:
         return <div>Loading</div>
       default:
         return (

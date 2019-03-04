@@ -3,10 +3,6 @@ import { withAuth } from '../components/AuthProvider';
 import bookService from '../lib/book-service';
 import transactionService from '../lib/transaction-service';
 import '../styles/createbook.css';
-import { withBooks } from '../components/BookProvider';
-import { Provider, Consumer } from '../components/BookProvider';
-import { withRouter } from "react-router";
-
 class CreateBook extends Component {
 
   state={};
@@ -57,12 +53,7 @@ class CreateBook extends Component {
           clue: '',
           coordinates: [],
         });
-      })
-      .then(() => {
-        console.log(this.props)
-        this.props.updateBooks(this.state)
-      })
-      .catch(error => console.log(error));
+      }).catch(error => console.log(error));
     
     event.preventDefault();
   };
@@ -87,4 +78,4 @@ class CreateBook extends Component {
   }
 }
 
-export default withRouter(withAuth(withBooks(CreateBook)))
+export default withAuth(CreateBook)
