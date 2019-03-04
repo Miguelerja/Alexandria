@@ -88,9 +88,7 @@ class Map extends Component {
         (
             <PopUpPortal key={i} node={node}>
               <div>
-                <p>
-                  {this.props.books[0].info.title}
-                </p>
+                < TestComponent node={node} {...this.props} /> 
               </div>
             </PopUpPortal>
         )
