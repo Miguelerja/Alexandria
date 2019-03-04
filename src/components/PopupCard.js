@@ -36,15 +36,15 @@ class PopupCard extends Component {
 
     bookService.capture(book)
     .then((book) => {
-      console.log(book);
-      // transactionService.update(bookId, userThatHunts)
-        // .then((transaction) => console.log(transaction))
-        // .catch(error => console.log(error))
+      const userThatHunts = this.props.user._id;
+      transactionService.update(bookId, userThatHunts)
+        .then((transaction) => console.log(transaction))
+        .catch(error => console.log(error));
     })
     .catch(error => console.log(error));
   }
 
-  handleLoss = () => { // TODO Not working error 404
+  handleLoss = () => {
     const { _id } = this.props.book;
     const book = {
       id: _id,
@@ -52,10 +52,12 @@ class PopupCard extends Component {
     };
     bookService.setStrikes(book)
     .then((book) => console.log(book))
-    .then((book) => ReactDOM.unmountComponentAtNode(document.getElementById(this.props.cardId)))
+    .then((book) => {
+      ReactDOM.unmountComponentAtNode(document.getElementById(this.props.cardId));
+      this.props.updateBooks();
+    })
     .catch(error => console.log(error));
   }
-
 
   render() {
     const { title, author, synopsis } = this.props.book.info;

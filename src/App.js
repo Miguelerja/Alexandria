@@ -11,27 +11,29 @@ import AuthProvider from './components/AuthProvider';
 import Map from './components/Map';
 import Story from './components/Story';
 import addBookButton from './components/addBookButton';
-import bookService from './lib/book-service';
-import { withBooks } from './components/BookProvider';
+import BookProvider from './components/BookProvider';
 require ('dotenv').config();
 
 class App extends Component {
 
   render() {
+
     return (
       <AuthProvider>
-        <div className="container">
-          <Navbar data='data' />
-          <PrivateRoute component={addBookButton} />
-          <PrivateRoute component={Map} />
-          <Switch>
-            <AnonRoute path="/signup" component={Signup} />
-            <AnonRoute path="/login" component={Login} />
-            <PrivateRoute path="/private" component={Private} />
-            <PrivateRoute exact path="/book/create" component={CreateBook} />
-            <PrivateRoute path="/book/:id" component={Story} />
-          </Switch>
-        </div>
+          <div className="container">
+            <Navbar data='data' />
+            <PrivateRoute component={addBookButton} />
+            <BookProvider>
+              <PrivateRoute component={Map} />
+              <PrivateRoute exact path="/book/create" component={CreateBook} />
+            </BookProvider>
+            <Switch>
+              <AnonRoute path="/signup" component={Signup} />
+              <AnonRoute path="/login" component={Login} />
+              <PrivateRoute path="/private" component={Private} />
+              <PrivateRoute path="/book/:id" component={Story} />
+            </Switch>
+          </div>
       </AuthProvider>
     )
   }

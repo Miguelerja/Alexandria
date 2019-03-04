@@ -23,3 +23,7 @@
   width: 1.5rem;
   background-image: url('/images/open-book.svg') ;
 }
+
+.buttonUpdate {
+  margin-left: 50%;
+}
