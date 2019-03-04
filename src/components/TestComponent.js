@@ -27,7 +27,7 @@ export default class TestComponent extends Component {
 
   handleBookCodeInput = () => {
     const bookCode = this.state.code;
-    const bookId = this.props.book._id;
+    const bookId = this.state.book._id;
     const book = {
       id: bookId,
       code: bookCode,
@@ -45,7 +45,7 @@ export default class TestComponent extends Component {
   }
 
   handleLoss = () => {
-    const { _id } = this.props.book;
+    const { _id } = this.state.book;
     const book = {
       id: _id,
       strikes: 1,
@@ -81,6 +81,20 @@ export default class TestComponent extends Component {
         <span>{book.info.author}</span>
         <span>{book.info.synopsis}</span>
         <button onClick={this.handleClickCapture}>Capture</button>
+        {(this.state.showCaptureMenu ? 
+        <div className="book-capture-input-container" ref={(element) => {this.captureMenu = element;}}>
+          <input 
+            type="text"
+            name="code" 
+            onChange={this.handleChange} 
+            value={this.state.bookCode}
+            placeholder="Enter book code"
+          />
+          <button onClick={this.handleBookCodeInput}>Enter code</button>
+        </div>
+        :
+        <button onClick={this.handleLoss}>Declare it lost</button>
+        )}
         </>
         : null }
       </>
