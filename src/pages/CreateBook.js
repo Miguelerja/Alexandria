@@ -5,7 +5,10 @@ import transactionService from '../lib/transaction-service';
 import '../styles/createbook.css';
 class CreateBook extends Component {
 
-  state={};
+  state={
+    code: '',
+    submitClicked: false,
+  };
 
   handleBooksListUpdate = (data) => {
   };
@@ -28,8 +31,6 @@ class CreateBook extends Component {
     };
     bookService.create(book)
       .then((book) => {
-        console.log('whole book', book);
-        console.log('book code', book.code)
         const bookId = book.response._id;
         const { location } = book.response;
         const { story } = book.response.info;
@@ -52,6 +53,8 @@ class CreateBook extends Component {
           story: '',
           clue: '',
           coordinates: [],
+          code: book.response.code,
+          submitClicked: true,
         });
       }).catch(error => console.log(error));
     
@@ -64,44 +67,63 @@ class CreateBook extends Component {
   }
 
   render() {
-    const { author, title, synopsis, story, clue } = this.state;
+    const {
+      author,
+      title,
+      synopsis,
+      story,
+      clue,
+      code,
+      submitClicked
+    } = this.state;
     return (
-      <div className="create-book-form">
-        <input 
-          className="create-book-input text-input"
-          type="text" name="title" 
-          placeholder="Book title" 
-          value={title}
-          onChange={this.handleChange}/>
-        <input 
-          className="create-book-input text-input"
-          type="text" name="author" 
-          placeholder="Author" 
-          value={author}
-          onChange={this.handleChange}/>
-        <input 
-          className="create-book-input text-input big-input"
-          type="text" name="synopsis" 
-          placeholder="Synopsis" 
-          value={synopsis}
-          onChange={this.handleChange}/>
-        <input 
-          className="create-book-input text-input big-input"
-          type="text" name="story" 
-          placeholder="Your story" 
-          value={story}
-          onChange={this.handleChange}/>
-        <input 
-          className="create-book-input text-input big-input"
-          type="text" name="clue" 
-          placeholder="Clue" 
-          value={clue}
-          onChange={this.handleChange} />
-        <input 
-          className="create-book-input create-book-button"
-          type="submit" 
-          value="Create"
-          onClick={this.handleFormSubmit} />
+      <div>
+        {(submitClicked) ?
+          <div className="code-message">
+            <p className="code-instructions">Your book is ready to be set free 
+              but remember to write this code on it before
+            </p>
+            <p className="code">{code}</p>
+          </div>
+          :
+          <div className="create-book-form">
+            <input 
+              className="create-book-input text-input"
+              type="text" name="title" 
+              placeholder="Book title" 
+              value={title}
+              onChange={this.handleChange}/>
+            <input 
+              className="create-book-input text-input"
+              type="text" name="author" 
+              placeholder="Author" 
+              value={author}
+              onChange={this.handleChange}/>
+            <input 
+              className="create-book-input text-input big-input"
+              type="text" name="synopsis" 
+              placeholder="Synopsis" 
+              value={synopsis}
+              onChange={this.handleChange}/>
+            <input 
+              className="create-book-input text-input big-input"
+              type="text" name="story" 
+              placeholder="Your story" 
+              value={story}
+              onChange={this.handleChange}/>
+            <input 
+              className="create-book-input text-input big-input"
+              type="text" name="clue" 
+              placeholder="Clue" 
+              value={clue}
+              onChange={this.handleChange} />
+            <input 
+              className="create-book-input create-book-button"
+              type="submit" 
+              value="Create"
+              onClick={this.handleFormSubmit} />
+          </div>
+        }
       </div>
     )
   }
