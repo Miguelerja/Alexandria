@@ -61,11 +61,12 @@ class Map extends Component {
         }
 
     const mutationObserver = new MutationObserver(mutations => {
+          console.log(this.state.nodeList)
           mutations.forEach(mutation => {
               const newNodes = mutation.addedNodes;
               newNodes.forEach(node => {
                   if (node.classList && node.classList.contains('mapboxgl-popup-content')) {
-                      this.setState(prevState => ({nodeList: [...prevState.nodeList, node]}));
+                      this.setState(prevState => ({nodeList: [node]}));
                   }
               });
           });
@@ -88,7 +89,7 @@ class Map extends Component {
             <PopUpPortal key={i} node={node}>
               <div>
                 <p>
-                  {this.props.books[0].info.title}
+                  {this.props}
                 </p>
               </div>
             </PopUpPortal>
