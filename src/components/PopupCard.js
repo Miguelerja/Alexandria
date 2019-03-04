@@ -43,7 +43,7 @@ class PopupCard extends Component {
     .catch(error => console.log(error));
   }
 
-  handleLoss = () => { // TODO Not working error 404
+  handleLoss = () => {
     const { _id } = this.props.book;
     const book = {
       id: _id,
@@ -54,7 +54,6 @@ class PopupCard extends Component {
     .then((book) => ReactDOM.unmountComponentAtNode(document.getElementById(this.props.cardId)))
     .catch(error => console.log(error));
   }
-
 
   render() {
     const { title, author, synopsis } = this.props.book.info;

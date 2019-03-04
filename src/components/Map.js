@@ -45,19 +45,16 @@ class Map extends Component {
       this.map.addControl(this.geolocate);
 
       books.forEach(book => {
-        popUpCreator(book, this.map);
+        popUpCreator(book, this.map, this.props);
       });
     });
   }
 
-  componentWillReceiveProps(prevProps) {
-    if(JSON.stringify(this.props.books) !== JSON.stringify(prevProps.books)) {
-      console.log(this.props.books);
-    }
-  }
-
   render() {
-    return <div><button className="buttonUpdate" onClick={this.handleUpdateBooks}>button</button><div ref={element => this.mapbox = element} className='map' id='map'></div></div>
+    return <div>
+      <button className="buttonUpdate" onClick={this.handleUpdateBooks}>button</button>
+      <div ref={element => this.mapbox = element} className='map' id='map'></div>
+    </div>
   }
 }
 
