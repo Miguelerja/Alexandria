@@ -89,7 +89,7 @@ class Map extends Component {
             <PopUpPortal key={i} node={node}>
               <div>
                 <p>
-                  {this.props}
+                  {this.props.books[0].info.title}
                 </p>
               </div>
             </PopUpPortal>
