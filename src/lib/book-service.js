@@ -31,7 +31,7 @@ class BookService {
 
   capture(book) {
     const { id, code } = book;
-    return this.book.put(`http://localhost:5000/alexandria/bookCode/${code}`, {id})
+    return this.book.put(`http://localhost:5000/alexandria/bookCode/${id}`, {code})
       .then(response => response.data)
   }
 }
