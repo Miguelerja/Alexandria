@@ -37,7 +37,7 @@ class BookProvider extends Component {
     bookService.list()
       .then(booksList => {
         console.log('updating books');
-        const newBooks = booksList
+        const newBooks = booksList;
         this.setState({
           books: newBooks,
           status: true,

@@ -51,7 +51,10 @@ class PopupCard extends Component {
     };
     bookService.setStrikes(book)
     .then((book) => console.log(book))
-    .then((book) => ReactDOM.unmountComponentAtNode(document.getElementById(this.props.cardId)))
+    .then((book) => {
+      ReactDOM.unmountComponentAtNode(document.getElementById(this.props.cardId));
+      this.props.updateBooks();
+    })
     .catch(error => console.log(error));
   }
 
