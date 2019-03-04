@@ -6,7 +6,6 @@ import Navbar from './components/Navbar';
 import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Book from './pages/Book';
 import CreateBook from './pages/CreateBook';
 import AuthProvider from './components/AuthProvider';
 import Map from './components/Map';

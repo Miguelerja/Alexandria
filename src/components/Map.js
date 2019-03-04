@@ -33,7 +33,6 @@ export default class Map extends Component {
     this.map.on('load', () => {
       // Add geolocate control to the map.
       this.map.addControl(this.geolocate);
-
       books.forEach(book => {
         const markerDiv = document.createElement('div');
         markerDiv.className = 'marker-icon';
