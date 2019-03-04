@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../components/AuthProvider';
-import PopUpMenu from '../components/PopUpMenu';
 import '../styles/navbar.css';
 import MenuButton from '../components/MenuButton';
 import SlidingMenu from '../components/SlidingMenu';

@@ -28,7 +28,7 @@ class AddBookButton extends Component {
   render() {
     return (
       <div>
-        <Link className="add-book-button button" to="/books/create" onClick={this.handleClick} />
+        <button className="add-book-button button" onClick={this.handleClick} />
         
         {
           this.state.showMenu
