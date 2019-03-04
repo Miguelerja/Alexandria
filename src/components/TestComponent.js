@@ -21,7 +21,7 @@ export default class TestComponent extends Component {
     const {book} = this.state;
     return (
       <h1>
-        {(this.state.book !== undefined) ? this.state.book.info.title : null }
+        {(this.state.book !== undefined) ? book.info.title : null }
       </h1>
     )
   }
