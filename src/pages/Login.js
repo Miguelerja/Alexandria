@@ -16,7 +16,7 @@ class Login extends Component {
       .then(() => {
         this.props.history.push('/private')
       })
-      .catch( error => console.log(error) )
+      .catch( error => console.log(error))
   }
 
   handleChange = (event) => {  
@@ -29,7 +29,6 @@ class Login extends Component {
     return (
       <div className="form login-form">
         <form onSubmit={this.handleFormSubmit}>
-          {/* Username and password input for login */}
           <input type="text" name="username" placeholder="Username" value={username} onChange={this.handleChange}/>
           <input type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange} />
           <input type="submit" value="Login" />
