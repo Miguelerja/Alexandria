@@ -37,9 +37,9 @@ class PopupCard extends Component {
     bookService.capture(book)
     .then((book) => {
       console.log(book);
-      // transactionService.update(_id, userThatFrees)
-      //   .then((transaction) => console.log(transaction))
-      //   .catch(error => console.log(error))
+      // transactionService.update(bookId, userThatHunts)
+        // .then((transaction) => console.log(transaction))
+        // .catch(error => console.log(error))
     })
     .catch(error => console.log(error));
   }
