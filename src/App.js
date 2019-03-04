@@ -12,7 +12,6 @@ import Map from './components/Map';
 import Story from './components/Story';
 import addBookButton from './components/addBookButton';
 import BookProvider from './components/BookProvider';
-require ('dotenv').config();
 
 class App extends Component {
 
