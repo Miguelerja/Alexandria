@@ -66,13 +66,42 @@ class CreateBook extends Component {
   render() {
     const { author, title, synopsis, story, clue } = this.state;
     return (
-      <div className="form">
-        <input className="input text-input" type="text" name="title" placeholder="Book title" value={title} onChange={this.handleChange}/>
-        <input className="input text-input" type="text" name="author" placeholder="Author" value={author} onChange={this.handleChange}/>
-        <input className="input text-input" type="text" name="synopsis" placeholder="Synopsis" value={synopsis} onChange={this.handleChange}/>
-        <input className="input text-input" type="text" name="story" placeholder="Your story" value={story} onChange={this.handleChange}/>
-        <input className="input text-input" type="text" name="clue" placeholder="Clue" value={clue} onChange={this.handleChange} />
-        <input className="input button" type="submit" value="Create" onClick={this.handleFormSubmit} />
+      <div className="create-book-form">
+        <input 
+          className="create-book-input text-input"
+          type="text" name="title" 
+          placeholder="Book title" 
+          value={title}
+          onChange={this.handleChange}/>
+        <input 
+          className="create-book-input text-input"
+          type="text" name="author" 
+          placeholder="Author" 
+          value={author}
+          onChange={this.handleChange}/>
+        <input 
+          className="create-book-input text-input big-input"
+          type="text" name="synopsis" 
+          placeholder="Synopsis" 
+          value={synopsis}
+          onChange={this.handleChange}/>
+        <input 
+          className="create-book-input text-input big-input"
+          type="text" name="story" 
+          placeholder="Your story" 
+          value={story}
+          onChange={this.handleChange}/>
+        <input 
+          className="create-book-input text-input big-input"
+          type="text" name="clue" 
+          placeholder="Clue" 
+          value={clue}
+          onChange={this.handleChange} />
+        <input 
+          className="create-book-input create-book-button"
+          type="submit" 
+          value="Create"
+          onClick={this.handleFormSubmit} />
       </div>
     )
   }

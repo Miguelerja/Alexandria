@@ -41,6 +41,7 @@ class PopupCard extends Component {
         .then((transaction) => console.log(transaction))
         .catch(error => console.log(error));
     })
+    .then(this.props.history.push(`/book/${bookId}`))
     .catch(error => console.log(error));
   }
 

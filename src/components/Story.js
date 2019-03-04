@@ -6,18 +6,18 @@ import { withAuth } from './AuthProvider';
 
 class Story extends Component {
 
-  // componentDidMount() {
-  //   const userId = this.props.user._id;
+  componentDidMount() {
+    const userId = this.props.user._id;
 
-  //   transactionService.find(userId);
-  //     .then(bookService.find())
-  //     .catch()
-  // }
+    // transactionService.find(userId);
+      // .then()
+      // .catch()
+  }
 
   render() {
     return (
       <div>
-        
+        hola, soy story
       </div>
     )
   }

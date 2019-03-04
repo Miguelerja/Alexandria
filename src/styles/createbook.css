@@ -1,0 +1,32 @@
+input:focus::-webkit-input-placeholder { color:transparent; }
+input:focus:-moz-placeholder { color:transparent; } /* FF 4-18 */
+input:focus::-moz-placeholder { color:transparent; } /* FF 19+ */
+input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
+
+.create-book-form{
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1000;
+  width: 95vw;
+  margin: 0 2.5vw;
+  background-color: rgba(255, 255, 25, 1);
+}
+
+.create-book-input{
+  border: none;
+  height: 2.5rem;
+  margin: 0.3rem;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.create-book-button{
+  border: none;
+}
+
+.big-input{
+  height: 5rem;
+}
