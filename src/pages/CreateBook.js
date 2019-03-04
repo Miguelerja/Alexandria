@@ -5,6 +5,7 @@ import transactionService from '../lib/transaction-service';
 import '../styles/createbook.css';
 import { withBooks } from '../components/BookProvider';
 import { Provider, Consumer } from '../components/BookProvider';
+import { withRouter } from "react-router";
 
 class CreateBook extends Component {
 
@@ -58,8 +59,7 @@ class CreateBook extends Component {
         });
       })
       .then(() => {
-        console.log(Provider)
-        console.log(Consumer)
+        console.log(this.props)
         this.props.updateBooks(this.state)
       })
       .catch(error => console.log(error));
@@ -87,4 +87,4 @@ class CreateBook extends Component {
   }
 }
 
-export default withAuth(withBooks(CreateBook))
+export default withRouter(withAuth(withBooks(CreateBook)))

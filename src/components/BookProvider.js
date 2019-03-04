@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import bookService from '../lib/book-service'
+import { withRouter } from "react-router";
 
 const bookStore = [];
 
@@ -18,6 +19,7 @@ export const withBooks = (Comp) => {
           {(bookStore) => {
             return <Comp 
               books={bookStore.books}
+              updateBooks={bookStore.updateBooks}
               {...this.props} />
           }}
         </Consumer>
@@ -26,10 +28,17 @@ export const withBooks = (Comp) => {
   }
 }
 
-export default class BookProvider extends Component {
+class BookProvider extends Component {
   state = {
     books: [],
     status: 'loading',
+  }
+
+  updateBooks = (newBook) => {
+    const newState = { books: [...this.state.books].push(newBook)}
+    this.setState({
+      newState
+    })
   }
 
   componentDidMount() {
@@ -52,6 +61,7 @@ export default class BookProvider extends Component {
         return (
           <Provider value={
             { books: books,
+              updateBooks: this.updateBooks,
             }}>
             {children}
           </Provider>    
@@ -59,3 +69,5 @@ export default class BookProvider extends Component {
     }
   }
 }
+
+export default withRouter(BookProvider)

@@ -17,6 +17,7 @@ require ('dotenv').config();
 class App extends Component {
 
   render() {
+
     return (
       <AuthProvider>
           <div className="container">
@@ -24,11 +25,9 @@ class App extends Component {
             <PrivateRoute component={addBookButton} />
             <BookProvider>
               <PrivateRoute component={Map} />
+              <PrivateRoute exact path="/book/create" component={CreateBook} />
             </BookProvider>
             <Switch>
-              <BookProvider>
-                <PrivateRoute exact path="/book/create" component={CreateBook} />
-              </BookProvider>
               <AnonRoute path="/signup" component={Signup} />
               <AnonRoute path="/login" component={Login} />
               <PrivateRoute path="/private" component={Private} />

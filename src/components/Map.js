@@ -21,6 +21,7 @@ class Map extends Component {
   });
 
   componentDidMount() {
+    console.log(this.props)
     const {
       books
     } = this.props;
