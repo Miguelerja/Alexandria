@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom';
 import PopupCard from '../components/PopupCard';
 
 export const popUpCreator = (book, mapboxMap, props) => {
+  console.log(mapboxMap);
   const markerDiv = document.createElement('div');
     markerDiv.className = 'marker-icon';
     markerDiv.setAttribute('id', `marker-icon-${book._id}`);
@@ -31,9 +32,9 @@ export const popUpCreator = (book, mapboxMap, props) => {
     .addEventListener('mouseenter', (event) => {
       if (!marker.getPopup().isOpen()) {
         marker.getPopup().addTo(map);
-        ReactDOM.render( <PopupCard book={ book } {...props} cardId={`popup-inner-cont-${book._id}`}/>,
-          document.getElementById(`popup-inner-cont-${book._id}`)
-        )
+        //ReactDOM.render( <PopupCard book={ book } {...props} cardId={`popup-inner-cont-${book._id}`}/>,
+        //  document.getElementById(`popup-inner-cont-${book._id}`)
+        //)
       }
     });
 }

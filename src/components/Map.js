@@ -5,12 +5,16 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import { withAuth } from '../components/AuthProvider';
 import { withBooks } from '../components/BookProvider';
 import { popUpCreator } from '../functions/popUpCreator';
+import ReactDOM from 'react-dom';
+import TestComponent from './TestComponent';
 
 class Map extends Component {
 
   state = {
     isLoggedIn: false,
     books: this.props.books,
+    isPopUpOpen: false,
+    nodeList: [],
   }
 
   geolocate = new mapboxgl.GeolocateControl({
@@ -48,13 +52,59 @@ class Map extends Component {
         popUpCreator(book, this.map, this.props);
       });
     });
+
+    const nodeList = document.querySelectorAll('.mapboxgl-popup-content');
+        if (nodeList.length > 0) {
+            this.setState({
+                nodeList
+            });
+        }
+
+    const mutationObserver = new MutationObserver(mutations => {
+          mutations.forEach(mutation => {
+              const newNodes = mutation.addedNodes;
+              newNodes.forEach(node => {
+                  if (node.classList && node.classList.contains('mapboxgl-popup-content')) {
+                      this.setState(prevState => ({nodeList: [...prevState.nodeList, node]}));
+                  }
+              });
+          });
+      });
+      mutationObserver.observe(document.body, {
+          attributes: false,
+          characterData: false,
+          childList: true,
+          subtree: true,
+          attributeOldValue: false,
+          characterDataOldValue: false
+      });
+    
   }
 
   render() {
+    const nodeList = [...this.state.nodeList];
+    const portals = (nodeList.length > 0) ? nodeList.map((node, i) =>
+        (
+            <PopUpPortal key={i} node={node}>
+              <div>
+                <p>
+                  {this.props.books[0].info.title}
+                </p>
+              </div>
+            </PopUpPortal>
+        )
+
+    ) : null;
     return <div>
-      <button className="buttonUpdate" onClick={this.handleUpdateBooks}>button</button>
-      <div ref={element => this.mapbox = element} className='map' id='map'></div>
+      <div className='map' id='map'></div>
+      {portals}
     </div>
+  }
+}
+
+class PopUpPortal extends Component {
+  render() {
+      return ReactDOM.createPortal(this.props.children, this.props.node);
   }
 }
 
