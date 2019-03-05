@@ -14,7 +14,6 @@ import addBookButton from './components/addBookButton';
 import BookProvider from './components/BookProvider';
 
 class App extends Component {
-
   render() {
 
     return (

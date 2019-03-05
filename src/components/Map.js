@@ -7,7 +7,6 @@ import { withBooks } from '../components/BookProvider';
 import { popUpCreator } from '../functions/popUpCreator';
 
 class Map extends Component {
-
   state = {
     isLoggedIn: false,
     books: this.props.books,
@@ -21,7 +20,6 @@ class Map extends Component {
   });
 
   handleUpdateBooks = () => {
-    console.log(this.props);
     this.props.updateBooks();
   }
 
@@ -29,10 +27,11 @@ class Map extends Component {
     const {
       books
     } = this.props;
+
     const mapConfig = {
       container: 'map',
       style: 'mapbox://styles/ajer/cjsqedagl1fb51fnvxopap6mz',
-      center: [2.15, 41.39],
+      center: [2, 41],
       zoom: 9,
     };
 
@@ -42,7 +41,7 @@ class Map extends Component {
 
     this.map.on('load', () => {
       // Add geolocate control to the map.
-      this.map.addControl(this.geolocate);
+      this.map.addControl(this.geolocate)
 
       books.forEach(book => {
         popUpCreator(book, this.map, this.props);

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { withAuth } from '../components/AuthProvider';
-import PopUpMenu from '../components/PopUpMenu';
 import '../styles/navbar.css';
 import MenuButton from '../components/MenuButton';
 import SlidingMenu from '../components/SlidingMenu';
@@ -12,6 +11,14 @@ class Navbar extends Component {
   state = {
     showMenu: false,
   }
+
+  setCoordinates = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.setState({
+        coordinates: [position.coords.longitude, position.coords.latitude]
+      }) 
+    })
+  };
 
   showMenu = (event) => {
     event.preventDefault();
@@ -29,6 +36,8 @@ class Navbar extends Component {
   }
 
   handleClick = (event) => {
+    this.setCoordinates();
+
     if (this.state.showMenu === false) {
       this.showMenu(event);
     } else {
@@ -51,16 +60,15 @@ class Navbar extends Component {
           this.state.showMenu
             ? (
               < SlidingMenu handleClick={this.handleClick}
-                  isVisible={this.state.showMenu}
-                  receiveElement={this.receiveElement} props={this.props} />
+                isVisible={this.state.showMenu}
+                receiveElement={this.receiveElement} props={this.props} />
             )
             : (
               < SlidingMenu handleClick={this.handleClick} 
-                  isVisible={this.state.showMenu}
-                  receiveElement={this.receiveElement} props={this.props} />
+                isVisible={this.state.showMenu}
+                receiveElement={this.receiveElement} props={this.props} />
             )
         }
-    
       </div>
     );
   }
