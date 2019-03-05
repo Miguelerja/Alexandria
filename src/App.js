@@ -22,13 +22,15 @@ class App extends Component {
             <BookProvider>
               <Navbar data='data' />
               <PrivateRoute component={addBookButton} />
-              <PrivateRoute component={Map} />
+            <Switch>              
+              <PrivateRoute exact path="/book/:id" component={Story} />
+              <PrivateRoute path="/" component={Map} />
+            </Switch>            
             </BookProvider>
             <Switch>
               <AnonRoute path="/signup" component={Signup} />
               <AnonRoute path="/login" component={Login} />
               <PrivateRoute path="/private" component={Private} />
-              <PrivateRoute path="/book/:id" component={Story} />
             </Switch>
           </div>
       </AuthProvider>

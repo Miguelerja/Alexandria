@@ -38,7 +38,7 @@ export default class TestComponent extends Component {
 
     if (this.state.rightBook.code === bookCode) {
       bookService.capture(book)
-      .then((book) => {
+        .then((book) => {
         const userThatHunts = this.props.user._id;
         transactionService.update(bookId, userThatHunts)
           .then((transaction) => console.log(transaction))
