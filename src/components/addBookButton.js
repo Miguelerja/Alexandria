@@ -39,13 +39,13 @@ class AddBookButton extends Component {
         <div className="book-button-container">
           <div className="book">
             <div className="back"></div>
-            <div className="page6" onClick={this.handleClick}>Leave behind a book with a code</div>
-            <div className="page5" onClick={this.handleClick}></div>
+            <div className="page6" onClick={this.handleClick}>Leave behind a book you picked with a code</div>
+            <div className="page5" onClick={this.handleClick}>📚</div>
             <div className="page4"></div>
             <div className="page3"></div>
             <div className="page2"></div>
             <div className="page1"></div>
-            <div className="front"></div>
+            <div className="front">Click here to leave a book behind</div>
           </div>
         </div>
         
