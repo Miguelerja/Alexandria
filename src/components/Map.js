@@ -89,7 +89,7 @@ class Map extends Component {
     
   }
 
-  /* Adding a WillUnmount check for the setStates fixes possible memory leak */
+  /* Adding a componentWillUnmount check for the setStates fixes possible memory leak */
 
   componentWillUnmount(){
     this.mounted = false;
