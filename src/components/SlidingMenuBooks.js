@@ -11,7 +11,6 @@ class SlidingMenuBooks extends Component {
     isLoaded: false,
   }
 
-
   render() {
     return (
       <div className="sliding-menu-books">

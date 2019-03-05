@@ -19,10 +19,10 @@ class App extends Component {
           <div className="container">
             <BookProvider>
               <Navbar data='data' />
-            <Switch>              
-              <PrivateRoute exact path="/book/:id" component={Story} />
-              <PrivateRoute path="/" component={Map} />
-            </Switch>            
+              <Switch>              
+                <PrivateRoute exact path="/book/:id" component={Story} />
+                <PrivateRoute path="/" component={Map} />
+              </Switch>            
             </BookProvider>
             <Switch>
               <AnonRoute path="/signup" component={Signup} />

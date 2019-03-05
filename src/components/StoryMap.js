@@ -41,18 +41,18 @@ class StoryMap extends Component {
         const marker = new mapboxgl.Marker({
           element: markerDiv,
         })
-        .setLngLat(transaction.location.coordinates)
-        .setPopup(popup);
+          .setLngLat(transaction.location.coordinates)
+          .setPopup(popup);
       
         marker.addTo(this.map);
-        });
+      });
     });
   };
 
   render() {
     return (
       <div>
-      <div ref={element => this.mapbox = element} className='story-map' id='map'></div>
+        <div ref={element => this.mapbox = element} className='story-map' id='map'></div>
       </div>
     )
   }

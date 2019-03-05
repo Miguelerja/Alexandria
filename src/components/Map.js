@@ -12,7 +12,7 @@ import PrivateRoute from './PrivateRoute';
 
 class Map extends Component {
   state = {
-    isLoggedIn: false,
+    // isLoggedIn: false,
     books: this.props.books,
     isPopUpOpen: false,
     nodeList: [],
@@ -53,7 +53,7 @@ class Map extends Component {
       this.map.addControl(this.geolocate)
 
       books.forEach(book => {
-        popUpCreator(book, this.map, this.props);
+        popUpCreator(book, this.map);
       });
     });
 
@@ -104,7 +104,7 @@ class Map extends Component {
       (
         <PopUpPortal key={i} node={node}>
           <>
-            < TestComponent node={node} {...this.props} /> 
+            <TestComponent node={node} {...this.props} /> 
           </>
         </PopUpPortal>
       )

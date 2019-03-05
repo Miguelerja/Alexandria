@@ -4,7 +4,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 /* Popup creator helper function */
 
-export const popUpCreator = (book, mapboxMap, props) => {
+export const popUpCreator = (book, mapboxMap) => {
   const markerDiv = document.createElement('div');
     markerDiv.className = 'marker-icon';
     markerDiv.setAttribute('id', `${book._id}`);
