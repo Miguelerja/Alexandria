@@ -6,7 +6,7 @@ import { withAuth } from '../components/AuthProvider';
 import { withBooks } from '../components/BookProvider';
 import { popUpCreator } from '../functions/popUpCreator';
 import ReactDOM from 'react-dom';
-import TestComponent from './TestComponent';
+import PopUpCard from './PopUpCard';
 import addBookButton from './addBookButton';
 import PrivateRoute from './PrivateRoute';
 
@@ -103,9 +103,7 @@ class Map extends Component {
     const portal = (nodeList.length > 0) ? nodeList.map((node, i) =>
       (
         <PopUpPortal key={i} node={node}>
-          <>
-            <TestComponent node={node} {...this.props} /> 
-          </>
+          <PopUpCard node={node} {...this.props} /> 
         </PopUpPortal>
       )
     ) :
