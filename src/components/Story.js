@@ -20,7 +20,7 @@ class Story extends Component {
 
   render() {
     const style = {
-      zIndex: 1000,
+      zIndex: 1000000,
     };
     return (
       <div style={style}>

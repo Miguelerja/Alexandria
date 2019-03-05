@@ -36,16 +36,18 @@ export default class TestComponent extends Component {
       code: bookCode,
     };
 
-    bookService.capture(book)
-    .then((book) => {
-      const userThatHunts = this.props.user._id;
-      transactionService.update(bookId, userThatHunts)
-        .then((transaction) => console.log(transaction))
-        .catch(error => console.log(error));
-    })
-    /* This redirect seems to work but component is hidden behind the rest*/
-    .then(this.props.history.push(`/book/${bookId}`))
-    .catch(error => console.log(error));
+    if (this.state.rightBook.code === bookCode) {
+      bookService.capture(book)
+      .then((book) => {
+        const userThatHunts = this.props.user._id;
+        transactionService.update(bookId, userThatHunts)
+          .then((transaction) => console.log(transaction))
+          .catch(error => console.log(error));
+      })
+      /* This redirect seems to work but component is hidden behind the rest*/
+      .then(this.props.history.push(`/book/${bookId}`))
+      .catch(error => console.log(error));
+    }
   }
 
   handleLoss = () => {
@@ -91,7 +93,7 @@ export default class TestComponent extends Component {
             type="text"
             name="code" 
             onChange={this.handleChange} 
-            value={this.state.bookCode}
+            value={this.state.code}
             placeholder="Enter book code"
           />
           <button onClick={this.handleBookCodeInput}>Enter code</button>
