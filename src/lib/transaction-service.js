@@ -18,8 +18,13 @@ class TransactionService {
       .then(({ data }) => data);
   }
   
-  find(bookId) {
+  findBook(bookId) {
     return this.transaction.get(`transaction/?bookId=${bookId}`)
+      .then(({ data }) => data);
+  }
+
+  findUser(userThatHunts) {
+    return this.transaction.get(`transaction/?userThatHunts=${userThatHunts}`)
       .then(({ data }) => data);
   }
 

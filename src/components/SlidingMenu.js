@@ -4,11 +4,24 @@ import "../styles/slidingmenu.css";
 import Login from '../pages/Login';
 import SignUp from '../pages/Signup';
 import SlidingMenuBooks from '../components/SlidingMenuBooks';
- 
-class Menu extends Component {
+import transactionService from '../lib/transaction-service';
 
+class Menu extends Component {
   state = {
     hasAccount: true,
+    isLoading: true,
+    transactions: [],
+  }
+
+  transactionsHandler = () => {
+    const userThatHunts = this.props.user._id;
+    transactionService.findUser(userThatHunts)
+      .then((transactions) => {
+        this.setState({
+          transactions: transactions,
+        });
+      })
+      .catch(error => console.log(error));
   }
 
   handleClickAccount = (event) => {
@@ -20,6 +33,10 @@ class Menu extends Component {
 
   componentDidMount() {
     this.props.receiveElement(this.dropdownMenu);
+    this.transactionsHandler();
+    this.setState({
+      isLoading: false,
+    })
   }
 
   render() {
@@ -33,10 +50,19 @@ class Menu extends Component {
     }
 
     if (isLogged) {
+      const { isLoading } = this.state;
       return (
-        <div id="slidingMenu" className={visible} ref={(element) => {this.dropdownMenu = element;}}>
+        <div 
+          id="slidingMenu" 
+          className={visible} 
+          ref={(element) => {this.dropdownMenu = element;}}
+        >
           <p className="sliding-menu-username">{ username }'s Profile</p>
-          < SlidingMenuBooks {...this.props} />
+          {(isLoading) ? <div>Loading</div> :
+            <SlidingMenuBooks 
+            transactions={this.state.transactions}
+            />
+          }
           <p className="sliding-menu-logout" onClick={logout}>Log out</p>
         </div>
       );

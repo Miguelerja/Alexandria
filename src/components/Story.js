@@ -11,7 +11,7 @@ class Story extends Component {
 
   componentDidMount() {
     const bookId = this.props.match.params.id;
-    transactionService.find(bookId)
+    transactionService.findBook(bookId)
       .then((transactions) => {
         this.setState({
           bookTransactions: transactions,
