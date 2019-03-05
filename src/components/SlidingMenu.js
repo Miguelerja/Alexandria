@@ -27,7 +27,7 @@ class Menu extends Component {
     let visible = "hidden";
     const { isLogged, user, logout } = this.props;
     const { username } = user;
- 
+
     if (this.props.isVisible) {
       visible = "visible";
     }

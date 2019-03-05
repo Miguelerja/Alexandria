@@ -8,8 +8,8 @@ class TransactionService {
   }
 
   create(transaction) {
-    const { bookId, userThatFrees, location, story } = transaction;
-    return this.transaction.post('/transaction/new', {bookId, userThatFrees, location, story})
+    const { bookTitle, bookId, userThatFrees, location, story } = transaction;
+    return this.transaction.post('/transaction/new', {bookTitle, bookId, userThatFrees, location, story})
       .then(({ data }) => data);
   }
   
