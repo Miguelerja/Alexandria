@@ -14,12 +14,12 @@ class TransactionService {
   }
   
   list() {
-    return this.transaction.get('/')
+    return this.transaction.get('transaction/')
       .then(({ data }) => data);
   }
   
-  find(userId) {
-    return this.transaction.get(`/?${userId}=${userId}`)
+  find(bookId) {
+    return this.transaction.get(`transaction/?bookId=${bookId}`)
       .then(({ data }) => data);
   }
 

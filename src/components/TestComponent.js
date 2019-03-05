@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import bookService from '../lib/book-service';
 import '../styles/popupcard.css';
 import transactionService from '../lib/transaction-service';
-import ReactDOM from 'react-dom';
 
+/* Component that gets passed through Map Portal to insert inner popup content
+and functionality */
 
-class PopupCard extends Component {
+export default class TestComponent extends Component {
 
   state = {
+    books: this.props.books,
     showCaptureMenu: false,
   }
 
@@ -28,25 +30,28 @@ class PopupCard extends Component {
 
   handleBookCodeInput = () => {
     const bookCode = this.state.code;
-    const bookId = this.props.book._id;
+    const bookId = this.state.rightBook._id;
     const book = {
       id: bookId,
       code: bookCode,
     };
 
-    bookService.capture(book)
-    .then((book) => {
-      const userThatHunts = this.props.user._id;
-      transactionService.update(bookId, userThatHunts)
-        .then((transaction) => console.log(transaction))
-        .catch(error => console.log(error));
-    })
-    .then(this.props.history.push(`/book/${bookId}`))
-    .catch(error => console.log(error));
+    if (this.state.rightBook.code === bookCode) {
+      bookService.capture(book)
+        .then((book) => {
+        const userThatHunts = this.props.user._id;
+        transactionService.update(bookId, userThatHunts)
+          .then((transaction) => console.log(transaction))
+          .catch(error => console.log(error));
+      })
+      /* This redirect seems to work but component is hidden behind the rest*/
+      .then(this.props.history.push(`/book/${bookId}`))
+      .catch(error => console.log(error));
+    }
   }
 
   handleLoss = () => {
-    const { _id } = this.props.book;
+    const { _id } = this.state.rightBook;
     const book = {
       id: _id,
       strikes: 1,
@@ -54,21 +59,33 @@ class PopupCard extends Component {
     bookService.setStrikes(book)
     .then((book) => console.log(book))
     .then((book) => {
-      ReactDOM.unmountComponentAtNode(document.getElementById(this.props.cardId));
       this.props.updateBooks();
     })
     .catch(error => console.log(error));
   }
 
+  componentDidMount() {
+    const idToFind = this.props.node.firstChild.getAttribute('id');
+    const {books} = this.props;
+    const rightBook = books.find((book) => {
+      return book._id === idToFind;
+    })
+    this.setState({
+      rightBook: rightBook,
+    })
+  }
+
   render() {
-    const { title, author, synopsis } = this.props.book.info;
+    const {rightBook} = this.state;
     return (
-      <div className="popup-card-content-container">
+      <>
+        {(this.state.rightBook !== undefined) ?
+        <>
         <div className="typewriter">
-          <h1>{title}</h1>
+          <h1>{rightBook.info.title}</h1>
         </div>
-        <span>{author}</span>
-        <span>{synopsis}</span>
+        <span>{rightBook.info.author}</span>
+        <span>{rightBook.info.synopsis}</span>
         <button onClick={this.handleClickCapture}>Capture</button>
         {(this.state.showCaptureMenu ? 
         <div className="book-capture-input-container" ref={(element) => {this.captureMenu = element;}}>
@@ -76,7 +93,7 @@ class PopupCard extends Component {
             type="text"
             name="code" 
             onChange={this.handleChange} 
-            value={this.state.bookCode}
+            value={this.state.code}
             placeholder="Enter book code"
           />
           <button onClick={this.handleBookCodeInput}>Enter code</button>
@@ -84,9 +101,9 @@ class PopupCard extends Component {
         :
         <button onClick={this.handleLoss}>Declare it lost</button>
         )}
-      </div>
+        </>
+        : null }
+      </>
     )
   }
 }
-
-export default PopupCard;

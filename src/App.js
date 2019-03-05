@@ -6,7 +6,6 @@ import Navbar from './components/Navbar';
 import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import CreateBook from './pages/CreateBook';
 import AuthProvider from './components/AuthProvider';
 import Map from './components/Map';
 import Story from './components/Story';
@@ -19,17 +18,18 @@ class App extends Component {
     return (
       <AuthProvider>
           <div className="container">
-            <Navbar data='data' />
-            <PrivateRoute component={addBookButton} />
             <BookProvider>
-              <PrivateRoute component={Map} />
-              <PrivateRoute exact path="/book/create" component={CreateBook} />
+              <Navbar data='data' />
+              <PrivateRoute component={addBookButton} />
+            <Switch>              
+              <PrivateRoute exact path="/book/:id" component={Story} />
+              <PrivateRoute path="/" component={Map} />
+            </Switch>            
             </BookProvider>
             <Switch>
               <AnonRoute path="/signup" component={Signup} />
               <AnonRoute path="/login" component={Login} />
               <PrivateRoute path="/private" component={Private} />
-              <PrivateRoute path="/book/:id" component={Story} />
             </Switch>
           </div>
       </AuthProvider>

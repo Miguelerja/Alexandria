@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { withAuth } from '../components/AuthProvider';
-import { Link } from 'react-router-dom';
-import "../styles/popupmenu.css";
+import "../styles/slidingmenu.css";
 import Login from '../pages/Login';
 import SignUp from '../pages/Signup';
+import SlidingMenuBooks from '../components/SlidingMenuBooks';
  
 class Menu extends Component {
 
@@ -35,9 +35,9 @@ class Menu extends Component {
     if (isLogged) {
       return (
         <div id="slidingMenu" className={visible} ref={(element) => {this.dropdownMenu = element;}}>
-          <p>{ username }'s Profile</p>
-          <Link to="/history" />
-          <p onClick={logout}>Log out</p>
+          <p className="sliding-menu-username">{ username }'s Profile</p>
+          < SlidingMenuBooks {...this.props} />
+          <p className="sliding-menu-logout" onClick={logout}>Log out</p>
         </div>
       );
     } else {

@@ -18,3 +18,15 @@
   transform: translate3d(0vw, 0, 0);
   overflow: hidden;
 }
+
+.sliding-menu-username {
+  height: 10vh;
+  margin: 0;
+  font-size: 2rem;
+}
+
+.sliding-menu-logout {
+  height: 10vh;
+  margin: 0;
+  font-size: 2rem;
+}

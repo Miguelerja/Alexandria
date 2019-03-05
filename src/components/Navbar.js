@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { withAuth } from '../components/AuthProvider';
 import '../styles/navbar.css';
 import MenuButton from '../components/MenuButton';

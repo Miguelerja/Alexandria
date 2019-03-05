@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { withAuth } from './AuthProvider';
 import '../styles/addBookButton.css';
-import { Link } from 'react-router-dom';
 import CreateBook from '../pages/CreateBook';
 
 class AddBookButton extends Component {
@@ -28,7 +27,7 @@ class AddBookButton extends Component {
   render() {
     return (
       <div>
-        <Link className="add-book-button button" to="/books/create" onClick={this.handleClick} />
+        <button className="add-book-button button" onClick={this.handleClick} />
         
         {
           this.state.showMenu

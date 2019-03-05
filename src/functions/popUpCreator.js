@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
 import '../styles/map.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import ReactDOM from 'react-dom';
-import PopupCard from '../components/PopupCard';
+
+/* Popup creator helper function */
 
 export const popUpCreator = (book, mapboxMap, props) => {
   const markerDiv = document.createElement('div');
     markerDiv.className = 'marker-icon';
-    markerDiv.setAttribute('id', `marker-icon-${book._id}`);
+    markerDiv.setAttribute('id', `${book._id}`);
   let popupContent = document.createElement('div');
-    popupContent.setAttribute('id', `popup-inner-cont-${book._id}`);
+    popupContent.setAttribute('id', `${book._id}`);
 
   const popup = new mapboxgl.Popup({
     closeButton: false,
@@ -26,14 +25,4 @@ export const popUpCreator = (book, mapboxMap, props) => {
 
   const map = mapboxMap;
   marker.addTo(map);
-
-  document.getElementById(`marker-icon-${book._id}`)
-    .addEventListener('mouseenter', (event) => {
-      if (!marker.getPopup().isOpen()) {
-        marker.getPopup().addTo(map);
-        ReactDOM.render( <PopupCard book={ book } {...props} cardId={`popup-inner-cont-${book._id}`}/>,
-          document.getElementById(`popup-inner-cont-${book._id}`)
-        )
-      }
-    });
 }

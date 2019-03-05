@@ -11,19 +11,30 @@ class Story extends Component {
   }
 
   componentDidMount() {
-    const userId = this.props.user._id;
-
-    transactionService.find(userId)
-      .then()
-      .catch()
+    const bookId = this.props.match.params.id;
+    transactionService.find(bookId)
+      .then((transactions) => {
+        this.setState({
+          bookTransactions: transactions,
+          loaded: !this.state.loaded,
+        })
+      })
+      .catch(error => console.log(error))
   }
 
   render() {
+    const {loaded, bookTransactions} = this.state;
     return (
       <div>
-        <StoryMap 
-          transactions={this.}
-        />
+        {(loaded ?        
+          <div>
+            <StoryMap 
+              transactions={bookTransactions}
+            />
+          </div>
+          :
+          <div>loading...</div>
+        )}
       </div>
     )
   }
