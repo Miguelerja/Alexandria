@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import transactionService from '../lib/transaction-service';
-import bookService from '../lib/book-service';
 import { withAuth } from './AuthProvider';
 import StoryMap from './StoryMap';
 

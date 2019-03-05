@@ -6,7 +6,7 @@ import transactionService from '../lib/transaction-service';
 /* Component that gets passed through Map Portal to insert inner popup content
 and functionality */
 
-export default class TestComponent extends Component {
+export default class PopUpCard extends Component {
 
   state = {
     books: this.props.books,
@@ -14,7 +14,9 @@ export default class TestComponent extends Component {
   }
 
   showCaptureMenu = () => {
-    this.setState({ showCaptureMenu: !this.state.showCaptureMenu, });
+    this.setState({ 
+      showCaptureMenu: !this.state.showCaptureMenu, 
+    });
   }
 
   handleClickCapture = (event) => {
@@ -80,28 +82,28 @@ export default class TestComponent extends Component {
     return (
       <>
         {(this.state.rightBook !== undefined) ?
-        <>
-        <div className="typewriter">
-          <h1>{rightBook.info.title}</h1>
+        <div className="popup-portal-content">
+          <div className="typewriter">
+            <h1>{rightBook.info.title}</h1>
+          </div>
+          <span>{rightBook.info.author}</span>
+          <span>{rightBook.info.synopsis}</span>
+          <button ref={element => this.captureButton = element} onClick={this.handleClickCapture}>Capture</button>
+          {(this.state.showCaptureMenu ? 
+          <div className="book-capture-input-container" ref={(element) => {this.captureMenu = element;}}>
+            <input 
+              type="text"
+              name="code" 
+              onChange={this.handleChange} 
+              value={this.state.code}
+              placeholder="Enter book code"
+            />
+            <button onClick={this.handleBookCodeInput}>Enter code</button>
+          </div>
+          :
+          <button onClick={this.handleLoss}>Declare it lost</button>
+          )}
         </div>
-        <span>{rightBook.info.author}</span>
-        <span>{rightBook.info.synopsis}</span>
-        <button onClick={this.handleClickCapture}>Capture</button>
-        {(this.state.showCaptureMenu ? 
-        <div className="book-capture-input-container" ref={(element) => {this.captureMenu = element;}}>
-          <input 
-            type="text"
-            name="code" 
-            onChange={this.handleChange} 
-            value={this.state.code}
-            placeholder="Enter book code"
-          />
-          <button onClick={this.handleBookCodeInput}>Enter code</button>
-        </div>
-        :
-        <button onClick={this.handleLoss}>Declare it lost</button>
-        )}
-        </>
         : null }
       </>
     )

@@ -11,11 +11,10 @@ class SlidingMenuBooks extends Component {
     isLoaded: false,
   }
 
-
   render() {
     return (
       <div className="sliding-menu-books">
-        {this.props.books.map(book => <div>{book.info.title}</div>)}
+        {this.props.books.map((book, key) => <div key={key}>{book.info.title}</div>)}
       </div>
     )
   }

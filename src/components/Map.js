@@ -6,11 +6,13 @@ import { withAuth } from '../components/AuthProvider';
 import { withBooks } from '../components/BookProvider';
 import { popUpCreator } from '../functions/popUpCreator';
 import ReactDOM from 'react-dom';
-import TestComponent from './TestComponent';
+import PopUpCard from './PopUpCard';
+import addBookButton from './addBookButton';
+import PrivateRoute from './PrivateRoute';
 
 class Map extends Component {
   state = {
-    isLoggedIn: false,
+    // isLoggedIn: false,
     books: this.props.books,
     isPopUpOpen: false,
     nodeList: [],
@@ -51,7 +53,7 @@ class Map extends Component {
       this.map.addControl(this.geolocate)
 
       books.forEach(book => {
-        popUpCreator(book, this.map, this.props);
+        popUpCreator(book, this.map);
       });
     });
 
@@ -88,7 +90,7 @@ class Map extends Component {
     
   }
 
-  /* Adding a WillUnmount check for the setStates fixes possible memory leak */
+  /* Adding a componentWillUnmount check for the setStates fixes possible memory leak */
 
   componentWillUnmount(){
     this.mounted = false;
@@ -101,15 +103,14 @@ class Map extends Component {
     const portal = (nodeList.length > 0) ? nodeList.map((node, i) =>
       (
         <PopUpPortal key={i} node={node}>
-          <div>
-            < TestComponent node={node} {...this.props} /> 
-          </div>
+          <PopUpCard node={node} {...this.props} /> 
         </PopUpPortal>
       )
     ) :
     null;
 
     return <div>
+      <PrivateRoute component={addBookButton} />
       <div className='map' id='map'></div>
       {portal}
     </div>
