@@ -18,6 +18,8 @@ class Menu extends Component {
     event.stopPropagation();
   }
 
+  /* Receive reference to create sliding menu */
+
   componentDidMount() {
     this.props.receiveElement(this.dropdownMenu);
   }

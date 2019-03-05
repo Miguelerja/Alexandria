@@ -62,7 +62,11 @@
 
 .popup-portal-content button {
   padding: 0.5rem;
-  background-color: yellow;
+  background-color: maroon;
+  border-top-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  color: white;
   width: 100%;
   margin-bottom: 0;
   height: 100%;

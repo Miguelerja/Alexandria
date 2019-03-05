@@ -43,10 +43,10 @@ export default class PopUpCard extends Component {
         .then((book) => {
         const userThatHunts = this.props.user._id;
         transactionService.update(bookId, userThatHunts)
-          .then((transaction) => console.log(transaction))
+          .then((transaction) => this.props.updateBooks())
           .catch(error => console.log(error));
       })
-      /* This redirect seems to work but component is hidden behind the rest*/
+      /* This redirect seems to work but component is hidden behind the rest */
       .then(this.props.history.push(`/book/${bookId}`))
       .catch(error => console.log(error));
     }
