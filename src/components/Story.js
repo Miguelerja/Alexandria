@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import transactionService from '../lib/transaction-service';
 import { withAuth } from './AuthProvider';
 import StoryMap from './StoryMap';
+import FreeBook from './FreeBook';
 
 class Story extends Component {
   state= {
@@ -27,6 +28,7 @@ class Story extends Component {
       <div>
         {(loaded ?        
           <div>
+            <FreeBook />
             <StoryMap 
               transactions={bookTransactions}
             />

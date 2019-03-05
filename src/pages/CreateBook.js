@@ -11,9 +11,6 @@ class CreateBook extends Component {
     submitClicked: false,
   };
 
-  handleBooksListUpdate = (data) => {
-  };
-
   handleFormSubmit = (event) => {
     const { title, author, synopsis, story, clue } = this.state;
     const { coordinates } = this.props;

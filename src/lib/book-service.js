@@ -34,6 +34,12 @@ class BookService {
     return this.book.put(`/alexandria/bookCode/${id}`, {code})
       .then(response => response.data)
   }
+
+  setFreeAgain(book){
+    const { code, location, clue, info } = book;
+    return this.book.put('alexandria/freeBook', {code, location, clue, info})
+      .then(response => response.data)
+  }
 }
 
 const bookService = new BookService();
