@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { withAuth } from './AuthProvider';
 import '../styles/addBookButton.css';
-import { Link } from 'react-router-dom';
 import CreateBook from '../pages/CreateBook';
 
 class AddBookButton extends Component {

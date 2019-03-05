@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withAuth } from '../components/AuthProvider';
-import { Link } from 'react-router-dom';
 import "../styles/slidingmenu.css";
 import Login from '../pages/Login';
 import SignUp from '../pages/Signup';

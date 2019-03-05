@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { withAuth } from './AuthProvider';
 import { withBooks } from './BookProvider';
-import bookService from '../lib/book-service';
 import '../styles/slidingmenubooks.css';
 
 
