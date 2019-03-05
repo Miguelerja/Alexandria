@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom';
 import PopUpCard from './PopUpCard';
 import addBookButton from './addBookButton';
 import PrivateRoute from './PrivateRoute';
+import LoadingScreen from '../components/LoadingScreen';
 
 class Map extends Component {
   state = {
@@ -103,7 +104,7 @@ class Map extends Component {
     const portal = (nodeList.length > 0) ? nodeList.map((node, i) =>
       (
         <PopUpPortal key={i} node={node}>
-          <PopUpCard node={node} {...this.props} /> 
+            <PopUpCard node={node} {...this.props} /> 
         </PopUpPortal>
       )
     ) :

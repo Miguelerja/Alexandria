@@ -3,7 +3,7 @@ import { withAuth } from '../components/AuthProvider';
 import '../styles/navbar.css';
 import MenuButton from '../components/MenuButton';
 import SlidingMenu from '../components/SlidingMenu';
-
+import LoadingScreen from '../components/LoadingScreen';
 
 class Navbar extends Component {
 
@@ -67,6 +67,12 @@ class Navbar extends Component {
                 isVisible={this.state.showMenu}
                 receiveElement={this.receiveElement} props={this.props} />
             )
+        }
+        {
+          (this.props.isLogged) ?
+            null
+          :
+            <LoadingScreen />
         }
       </div>
     );

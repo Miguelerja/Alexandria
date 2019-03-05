@@ -6,8 +6,8 @@
 
 .mapboxgl-popup-content {
   color: #F3F3DD;
-  background-color: #91785D !important;
-  border-color: #91785D;
+  background-color: #1A1A1D !important;
+  border-color: #1A1A1D;
   width: 55vw !important;
   height: 30vh !important;
   font-family: 'Oswald';
@@ -15,7 +15,7 @@
 }
 
 .mapboxgl-popup-tip {
-  border-top-color: #91785D !important; 
+  border-top-color: #1A1A1D !important; 
 }
 
 .marker-icon{
