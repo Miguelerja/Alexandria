@@ -12,7 +12,7 @@ input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
   z-index: 1000;
   width: 95vw;
   margin: 0 2.5vw;
-  background-color: rgba(255, 255, 25, 1);
+  background-color: #870501;
 }
 
 .create-book-input{
@@ -25,6 +25,8 @@ input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
 
 .create-book-button{
   border: none;
+  color: whitesmoke;
+  background-color: maroon;
 }
 
 .big-input{
