@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withAuth } from '../components/AuthProvider';
 import bookService from '../lib/book-service';
 import transactionService from '../lib/transaction-service';
+import BookCode from '../components/BookCode';
 import '../styles/createbook.css';
 class CreateBook extends Component {
 
@@ -79,14 +80,9 @@ class CreateBook extends Component {
       submitClicked
     } = this.state;
     return (
-      <div>
+      <>
         {(submitClicked) ?
-          <div className="code-message">
-            <p className="code-instructions">Your book is ready to be set free 
-              but remember to write this code on it before
-            </p>
-            <p className="code">{code}</p>
-          </div>
+          <BookCode code={code}/>
           :
           <div className="create-book-form">
             <input 
@@ -126,7 +122,7 @@ class CreateBook extends Component {
               onClick={this.handleFormSubmit} />
           </div>
         }
-      </div>
+      </>
     )
   }
 }
