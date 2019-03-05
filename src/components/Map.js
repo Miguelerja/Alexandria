@@ -43,6 +43,8 @@ class Map extends Component {
 
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
+    /* Create map instance and sets markers and popups through popupCreator function */
+
     this.map = new mapboxgl.Map(mapConfig);
 
     this.map.on('load', () => {
@@ -54,50 +56,60 @@ class Map extends Component {
       });
     });
 
+    /* Search the HTML DOM for mapbox popup nodes for Portal setup using MutationObserver. 
+    Push the last created popup node into array in state */
+
     const nodeList = document.querySelectorAll('.mapboxgl-popup-content');
-        if (nodeList.length > 0 && this.mounted) {
-            this.setState({
-                nodeList
-            });
-        }
+    
+    if (nodeList.length > 0 && this.mounted) {
+      this.setState({
+        nodeList,
+      });
+    }
 
     const mutationObserver = new MutationObserver(mutations => {
-          mutations.forEach(mutation => {
-              const newNodes = mutation.addedNodes;
-              newNodes.forEach(node => {
-                  if (this.mounted && node.classList && node.classList.contains('mapboxgl-popup-content')) {
-                      this.setState(prevState => ({nodeList: [node]}));
-                  }
-              });
-          });
+      mutations.forEach(mutation => {
+        const newNodes = mutation.addedNodes;
+        newNodes.forEach(node => {
+          if (this.mounted && node.classList && node.classList.contains('mapboxgl-popup-content')) {
+              this.setState(prevState => ({nodeList: [node]}));
+          }
+        });
       });
-      mutationObserver.observe(document.body, {
-          attributes: false,
-          characterData: false,
-          childList: true,
-          subtree: true,
-          attributeOldValue: false,
-          characterDataOldValue: false
-      });
+    });
+    
+    mutationObserver.observe(document.body, {
+      attributes: false,
+      characterData: false,
+      childList: true,
+      subtree: true,
+      attributeOldValue: false,
+      characterDataOldValue: false
+    });
     
   }
+
+  /* Adding a WillUnmount check for the setStates fixes possible memory leak */
 
   componentWillUnmount(){
     this.mounted = false;
   }
 
+  /* Portal to PopUp Card component */
+
   render() {
     const nodeList = [...this.state.nodeList];
     const portal = (nodeList.length > 0) ? nodeList.map((node, i) =>
-        (
-            <PopUpPortal key={i} node={node}>
-              <div>
-                < TestComponent node={node} {...this.props} /> 
-              </div>
-            </PopUpPortal>
-        )
+      (
+        <PopUpPortal key={i} node={node}>
+          <div>
+            < TestComponent node={node} {...this.props} /> 
+          </div>
+        </PopUpPortal>
+      )
+    ) :
+    null;
 
-    ) : null;
     return <div>
       <div className='map' id='map'></div>
       {portal}

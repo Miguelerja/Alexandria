@@ -2,6 +2,7 @@ import mapboxgl from 'mapbox-gl';
 import '../styles/map.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
+/* Popup creator helper function */
 
 export const popUpCreator = (book, mapboxMap, props) => {
   const markerDiv = document.createElement('div');
@@ -24,5 +25,4 @@ export const popUpCreator = (book, mapboxMap, props) => {
 
   const map = mapboxMap;
   marker.addTo(map);
-
 }

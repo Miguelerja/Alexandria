@@ -3,6 +3,9 @@ import bookService from '../lib/book-service';
 import '../styles/popupcard.css';
 import transactionService from '../lib/transaction-service';
 
+/* Component that gets passed through Map Portal to insert inner popup content
+and functionality */
+
 export default class TestComponent extends Component {
 
   state = {

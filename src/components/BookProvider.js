@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import bookService from '../lib/book-service'
 import { withRouter } from "react-router";
 
+/* HOC that gives book context to routes and components that require it */
 
 export const BookContext = React.createContext(
   // bookStore // default value
