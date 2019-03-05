@@ -12,7 +12,6 @@ import Story from './components/Story';
 import BookProvider from './components/BookProvider';
 
 class App extends Component {
-
   render() {
 
     return (

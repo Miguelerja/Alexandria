@@ -11,6 +11,14 @@ class Navbar extends Component {
     showMenu: false,
   }
 
+  setCoordinates = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.setState({
+        coordinates: [position.coords.longitude, position.coords.latitude]
+      }) 
+    })
+  };
+
   showMenu = (event) => {
     event.preventDefault();
     this.setState({ showMenu: true }, () => {
@@ -27,6 +35,8 @@ class Navbar extends Component {
   }
 
   handleClick = (event) => {
+    this.setCoordinates();
+
     if (this.state.showMenu === false) {
       this.showMenu(event);
     } else {
@@ -49,16 +59,15 @@ class Navbar extends Component {
           this.state.showMenu
             ? (
               < SlidingMenu handleClick={this.handleClick}
-                  isVisible={this.state.showMenu}
-                  receiveElement={this.receiveElement} props={this.props} />
+                isVisible={this.state.showMenu}
+                receiveElement={this.receiveElement} props={this.props} />
             )
             : (
               < SlidingMenu handleClick={this.handleClick} 
-                  isVisible={this.state.showMenu}
-                  receiveElement={this.receiveElement} props={this.props} />
+                isVisible={this.state.showMenu}
+                receiveElement={this.receiveElement} props={this.props} />
             )
         }
-    
       </div>
     );
   }

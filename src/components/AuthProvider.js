@@ -13,7 +13,7 @@ export const withAuth = (Comp) => {
       return (
         <Consumer>
           {(authStore) => {
-            return <Comp 
+            return <Comp
               isLogged={authStore.isLogged}
               user={authStore.user}
               logout={authStore.logout}

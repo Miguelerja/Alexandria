@@ -3,28 +3,39 @@ import { Link } from 'react-router-dom';
 import transactionService from '../lib/transaction-service';
 import bookService from '../lib/book-service';
 import { withAuth } from './AuthProvider';
-
-/* IMPORTANT! I believe the redirect from the popup works
-but the component is being mounted behind all the rest, I saw it briefly on load.
-zIndex fix is untested. */
+import StoryMap from './StoryMap';
 
 class Story extends Component {
+  state= {
+    loaded: false,
+  }
 
   componentDidMount() {
-    const userId = this.props.user._id;
-    console.log('mounted');
-    // transactionService.find(userId);
-      // .then()
-      // .catch()
+    const bookId = this.props.match.params.id;
+    transactionService.find(bookId)
+      .then((transactions) => {
+        this.setState({
+          bookTransactions: transactions,
+          loaded: !this.state.loaded,
+        })
+      })
+      .catch(error => console.log(error))
   }
 
   render() {
-    const style = {
-      zIndex: 1000000,
-    };
+    const {loaded, bookTransactions} = this.state;
     return (
-      <div style={style}>
-        hola, soy story
+      <div>
+        {(loaded ?        
+          <div>
+            <StoryMap 
+              transactions={bookTransactions}
+            />
+            <Link to="/">Go back</Link>
+          </div>
+          :
+          <div>loading...</div>
+        )}
       </div>
     )
   }
