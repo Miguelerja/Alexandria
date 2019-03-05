@@ -9,7 +9,6 @@ import Login from './pages/Login';
 import AuthProvider from './components/AuthProvider';
 import Map from './components/Map';
 import Story from './components/Story';
-import addBookButton from './components/addBookButton';
 import BookProvider from './components/BookProvider';
 
 class App extends Component {
@@ -21,7 +20,6 @@ class App extends Component {
           <div className="container">
             <BookProvider>
               <Navbar data='data' />
-              <PrivateRoute component={addBookButton} />
             <Switch>              
               <PrivateRoute exact path="/book/:id" component={Story} />
               <PrivateRoute path="/" component={Map} />

@@ -10,8 +10,18 @@
   grid-column-end: 3;
 }
 
+.popup-portal-content {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 20% 10% 40% 30%;
+  height: 100%;
+}
+
 .typewriter {
   display: inline-block;
+  grid-column-start: 1;
+  grid-column-end: 3;
 }
 
 .typewriter h1 {
@@ -42,7 +52,7 @@
   50% { border-color: orange; }
 }
 
-.popup-card-content-container span:not(:last-child) {
+.popup-portal-content span:not(:last-child) {
   display: block;
   margin-top: 0;
   width: 100%;
@@ -50,7 +60,7 @@
   grid-column-end: 3;
 }
 
-.popup-card-content-container button {
+.popup-portal-content button {
   padding: 0.5rem;
   background-color: yellow;
   width: 100%;
