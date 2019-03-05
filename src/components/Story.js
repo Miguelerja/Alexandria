@@ -31,6 +31,7 @@ class Story extends Component {
             <StoryMap 
               transactions={bookTransactions}
             />
+            <Link to="/">Go back</Link>
           </div>
           :
           <div>loading...</div>
