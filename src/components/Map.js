@@ -9,7 +9,6 @@ import ReactDOM from 'react-dom';
 import PopUpCard from './PopUpCard';
 import addBookButton from './addBookButton';
 import PrivateRoute from './PrivateRoute';
-import LoadingScreen from '../components/LoadingScreen';
 
 class Map extends Component {
   state = {

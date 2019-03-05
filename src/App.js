@@ -10,7 +10,6 @@ import AuthProvider from './components/AuthProvider';
 import Map from './components/Map';
 import Story from './components/Story';
 import BookProvider from './components/BookProvider';
-import LoadingScreen from './components/LoadingScreen';
 
 class App extends Component {
   render() {

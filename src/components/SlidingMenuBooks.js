@@ -8,7 +8,14 @@ class SlidingMenuBooks extends Component {
   listTransactionBooks = () => {
     const { transactions } = this.props;
     return transactions.map(transaction => {
-      return (<Link to={`/book/${transaction.bookId}`}>{transaction.bookTitle}</Link>)
+      return (
+        <Link
+          key={transaction.bookId}
+          to={`/book/${transaction.bookId}`}
+        >
+          {transaction.bookTitle}
+        </Link>
+        )
     })
   }
 
