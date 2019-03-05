@@ -4,6 +4,9 @@ import transactionService from '../lib/transaction-service';
 import bookService from '../lib/book-service';
 import { withAuth } from './AuthProvider';
 
+/* IMPORTANT! I believe the redirect from the popup works
+but the component is being mounted behind all the rest, I saw it briefly on load.
+zIndex fix is untested. */
 
 class Story extends Component {
 
