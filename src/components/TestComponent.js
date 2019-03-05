@@ -30,7 +30,7 @@ export default class TestComponent extends Component {
 
   handleBookCodeInput = () => {
     const bookCode = this.state.code;
-    const bookId = this.state.book._id;
+    const bookId = this.state.rightBook._id;
     const book = {
       id: bookId,
       code: bookCode,
@@ -49,7 +49,7 @@ export default class TestComponent extends Component {
   }
 
   handleLoss = () => {
-    const { _id } = this.state.book;
+    const { _id } = this.state.rightBook;
     const book = {
       id: _id,
       strikes: 1,
@@ -69,21 +69,21 @@ export default class TestComponent extends Component {
       return book._id === idToFind;
     })
     this.setState({
-      book: rightBook,
+      rightBook: rightBook,
     })
   }
 
   render() {
-    const {book} = this.state;
+    const {rightBook} = this.state;
     return (
       <>
-        {(this.state.book !== undefined) ?
+        {(this.state.rightBook !== undefined) ?
         <>
         <div className="typewriter">
-          <h1>{book.info.title}</h1>
+          <h1>{rightBook.info.title}</h1>
         </div>
-        <span>{book.info.author}</span>
-        <span>{book.info.synopsis}</span>
+        <span>{rightBook.info.author}</span>
+        <span>{rightBook.info.synopsis}</span>
         <button onClick={this.handleClickCapture}>Capture</button>
         {(this.state.showCaptureMenu ? 
         <div className="book-capture-input-container" ref={(element) => {this.captureMenu = element;}}>
