@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import bookService from '../lib/book-service'
 import { withRouter } from "react-router";
+import LoadingScreen from './LoadingScreen';
 
 /* HOC that gives book context to routes and components that require it */
 
@@ -60,7 +61,7 @@ class BookProvider extends Component {
     const { children } = this.props;
     switch (status) {
       case false:
-        return <div>Loading</div>
+        return < LoadingScreen />
       default:
         return (
           <Provider value={
