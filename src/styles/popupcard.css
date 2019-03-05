@@ -10,8 +10,13 @@
   grid-column-end: 3;
 }
 
+.typewriter {
+  display: inline-block;
+}
+
 .typewriter h1 {
   color: white;
+  display: inline-block;
   margin-top: 0;
   margin-bottom: 0;
   padding: 0.4rem 0.1rem 0.4rem 0.1rem;

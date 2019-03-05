@@ -102,9 +102,9 @@ class Map extends Component {
     const portal = (nodeList.length > 0) ? nodeList.map((node, i) =>
       (
         <PopUpPortal key={i} node={node}>
-          <div>
+          <>
             < TestComponent node={node} {...this.props} /> 
-          </div>
+          </>
         </PopUpPortal>
       )
     ) :

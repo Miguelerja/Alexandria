@@ -80,28 +80,28 @@ export default class TestComponent extends Component {
     return (
       <>
         {(this.state.rightBook !== undefined) ?
-        <>
-        <div className="typewriter">
-          <h1>{rightBook.info.title}</h1>
+        <div clasName="popup-portal-content">
+          <div className="typewriter">
+            <h1>{rightBook.info.title}</h1>
+          </div>
+          <span>{rightBook.info.author}</span>
+          <span>{rightBook.info.synopsis}</span>
+          <button onClick={this.handleClickCapture}>Capture</button>
+          {(this.state.showCaptureMenu ? 
+          <div className="book-capture-input-container" ref={(element) => {this.captureMenu = element;}}>
+            <input 
+              type="text"
+              name="code" 
+              onChange={this.handleChange} 
+              value={this.state.code}
+              placeholder="Enter book code"
+            />
+            <button onClick={this.handleBookCodeInput}>Enter code</button>
+          </div>
+          :
+          <button onClick={this.handleLoss}>Declare it lost</button>
+          )}
         </div>
-        <span>{rightBook.info.author}</span>
-        <span>{rightBook.info.synopsis}</span>
-        <button onClick={this.handleClickCapture}>Capture</button>
-        {(this.state.showCaptureMenu ? 
-        <div className="book-capture-input-container" ref={(element) => {this.captureMenu = element;}}>
-          <input 
-            type="text"
-            name="code" 
-            onChange={this.handleChange} 
-            value={this.state.code}
-            placeholder="Enter book code"
-          />
-          <button onClick={this.handleBookCodeInput}>Enter code</button>
-        </div>
-        :
-        <button onClick={this.handleLoss}>Declare it lost</button>
-        )}
-        </>
         : null }
       </>
     )
