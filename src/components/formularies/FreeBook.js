@@ -12,7 +12,6 @@ class FreeBook extends Component {
     codeShown: true,
     storyShown: false,
     clueShown: false,
-    buttonShown: false,
     submitClicked: false,
   };
 
@@ -90,11 +89,7 @@ class FreeBook extends Component {
         storyShown: !this.state.storyShown,
         clueShown: !this.state.clueShown,
       });
-    case 'Confirm clue':
-      return this.setState({
-        clueShown: !this.state.clueShown,
-        buttonShown: !this.state.buttonShown,
-      });
+
     default:
       return this.state;
     }
@@ -108,7 +103,6 @@ class FreeBook extends Component {
       codeShown,
       clueShown,
       storyShown,
-      buttonShown,
       submitClicked,
     } = this.state;
 
@@ -163,25 +157,15 @@ class FreeBook extends Component {
                 placeholder="Enter clue" 
                 value={clue}
                 onChange={this.handleChange}/>
-              <input
-                className="formulary-next-button"
-                value="Confirm clue"
-                onClick={this.handleClick}
-              />
-            </>
-            :
-            null}
-
-            {(buttonShown) ? 
               <input 
-                className="create-book-input text-input"
+                className="formulary-next-button"
                 type="submit" 
                 value="Create"
                 onClick={this.handleFormSubmit} 
-              />          
+              /> 
+            </>
             :
             null}
-
           </div>
           }
       </>

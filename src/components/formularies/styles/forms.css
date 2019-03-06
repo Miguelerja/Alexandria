@@ -10,27 +10,46 @@ input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
   flex-direction: column;
   position: absolute;
   z-index: 1000;
-  width: 100vw;
-  background-color: #E6BE8A;
+  width: 90vw;
+  margin-top: 4.5rem;
+  background-color: #ffd788;
+  height: 55vh;
+  margin-left: 5vw;
+  border-radius: 5%;
 }
-
-/* COLOR 1 MAYBE: #EDAE49
-  
-*/
 
 .create-book-input{
   border: none;
-  height: 2.5rem;
+  height: 5rem;
   margin: 0.3rem;
-  font-size: 1rem;
+  font-size: 1.5rem;
   text-align: center;
   background-color: rgba(250, 250, 250, 0.4);
+  margin-top: 4rem;
+}
+
+.formulary-next-button {
+  font-size: 1.5rem;
+  width: 60%;
+  border-radius: 15px;
+  border: none;
+  padding: 1rem;
+  margin: 2rem auto;
+  background-color: rgb(94, 98, 128);
+  color: white;
+  text-align: center;
 }
 
 .create-book-button{
+  font-size: 1.5rem;
+  width: 60%;
+  border-radius: 15px;
   border: none;
-  color: whitesmoke;
-  background-color: maroon;
+  padding: 1rem;
+  margin: 2rem auto;
+  background-color: rgb(94, 98, 128);
+  color: white;
+  text-align: center;
 }
 
 .big-input{
