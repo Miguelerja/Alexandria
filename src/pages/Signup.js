@@ -34,8 +34,8 @@ class Signup extends Component {
     const { username, password } = this.state;
     return (
       <form className="form signup-form" onSubmit={this.handleFormSubmit}>
-        <input type="text" name="username" placeholder="Username" value={username} onChange={this.handleChange}/>
-        <input type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange} />
+        <input type="text" name="username" placeholder="Username" value={username || ''} onChange={this.handleChange} required />
+        <input type="password" name="password" placeholder="Password" value={password || ''} onChange={this.handleChange} required />
         <input className="auth-button" type="submit" value="Signup" />
       </form>
     )

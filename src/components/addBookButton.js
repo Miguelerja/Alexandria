@@ -42,7 +42,7 @@ class AddBookButton extends Component {
           <div className="book">
             <div className="back"></div>
             <div className="page6" onClick={this.handleClickBookWithCode}>Leave behind a book you picked with a code</div>
-            <div className="page5" onClick={this.handleClick}>📚</div>
+            <div className="page5" onClick={this.handleClick}><span role="img" aria-label="emoji book">📚</span></div>
             <div className="page4"></div>
             <div className="page3"></div>
             <div className="page2"></div>

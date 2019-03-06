@@ -118,7 +118,7 @@ class CreateBook extends Component {
                   className="create-book-input text-input"
                   type="text" name="title" 
                   placeholder="Book title" 
-                  value={title}
+                  value={title || ''}
                   onChange={this.handleChange}/>
                 <input
                   className="formulary-next-button"
@@ -135,7 +135,7 @@ class CreateBook extends Component {
                   className="create-book-input text-input"
                   type="text" name="author" 
                   placeholder="Author" 
-                  value={author}
+                  value={author || ''}
                   onChange={this.handleChange}/>
                 <input
                   className="formulary-next-button"
@@ -152,7 +152,7 @@ class CreateBook extends Component {
                   className="create-book-input text-input big-input"
                   type="text" name="story" 
                   placeholder="Your story" 
-                  value={story}
+                  value={story || ''}
                   onChange={this.handleChange}/>
                 <input
                   className="formulary-next-button"
@@ -169,7 +169,7 @@ class CreateBook extends Component {
                   className="create-book-input text-input big-input"
                   type="text" name="clue" 
                   placeholder="Clue" 
-                  value={clue}
+                  value={clue || ''}
                   onChange={this.handleChange} />
                 <input 
                   className="create-book-input create-book-button"

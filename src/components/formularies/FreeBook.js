@@ -119,7 +119,7 @@ class FreeBook extends Component {
                 type="text" 
                 name="code" 
                 placeholder="Enter book code" 
-                value={code}
+                value={code || ''}
                 onChange={this.handleChange}/>
               <input
                 className="formulary-next-button"
@@ -137,7 +137,7 @@ class FreeBook extends Component {
                 type="text" 
                 name="story" 
                 placeholder="Enter your story" 
-                value={story}
+                value={story || ''}
                 onChange={this.handleChange}/>
               <input
                 className="formulary-next-button"
@@ -155,7 +155,7 @@ class FreeBook extends Component {
                 type="text" 
                 name="clue" 
                 placeholder="Enter clue" 
-                value={clue}
+                value={clue || ''}
                 onChange={this.handleChange}/>
               <input 
                 className="formulary-next-button"

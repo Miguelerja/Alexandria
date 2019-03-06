@@ -95,7 +95,7 @@ export default class PopUpCard extends Component {
               type="text"
               name="code" 
               onChange={this.handleChange} 
-              value={this.state.code}
+              value={this.state.code || ''}
               placeholder="Enter book code"
             />
             <button onClick={this.handleBookCodeInput}>Enter code</button>

@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default class NewBookProvider extends Component {
   state = {
     books: [],
