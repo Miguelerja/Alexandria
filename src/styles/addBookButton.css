@@ -116,3 +116,98 @@
 .book:hover .back {
   transform: rotateY(-20deg) scale(1.1);
 }
+
+/* Media query for desktop computers and large laptops */
+
+@media (min-width: 1281px) {
+
+  .book-button-container {
+    margin-left: 84vw;
+    margin-top: 64vh;
+  }
+  
+  .book {
+    height: 16vw;
+  }
+  
+  .front, .back, .page1, .page2, .page3, .page4, .page5, .page6 {
+    width: 12vw;
+  }
+  
+}
+
+/* Small desktop screens and laptops */
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  .book-button-container {
+    margin-left: 84vw;
+    margin-top: 64vh;
+  }
+  
+  .book {
+    height: 16vw;
+  }
+  
+  .front, .back, .page1, .page2, .page3, .page4, .page5, .page6 {
+    width: 12vw;
+  }
+  
+}
+
+/* Tablets and Ipads in portrait mode */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+  .book-button-container {
+    margin-left: 66vw;
+    margin-top: 70vh;
+  }
+  
+  .book {
+    height: 30vw;
+  }
+  
+  .front, .back, .page1, .page2, .page3, .page4, .page5, .page6 {
+    width: 25vw;
+  }
+  
+}
+
+/* Tablets and Ipads in landscape mode */
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+  .book-button-container {
+    margin-left: 80vw;
+    margin-top: 67vh;
+  }
+  
+  .book {
+    height: 18vw;
+  }
+  
+  .front, .back, .page1, .page2, .page3, .page4, .page5, .page6 {
+    width: 14vw;
+  }
+  
+}
+
+/* Mobiles in landscape mode */
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+  .book-button-container {
+    margin-left: 83vw;
+    margin-top: 63vh;
+  }
+  
+  .book {
+    height: 17vw;
+  }
+  
+  .front, .back, .page1, .page2, .page3, .page4, .page5, .page6 {
+    width: 13vw;
+  }
+  
+}

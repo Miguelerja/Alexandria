@@ -44,3 +44,53 @@
   color: rgb(94, 98, 128);
   margin-left: 6rem;
 }
+
+
+@media (min-width: 1281px) {
+
+  #slidingMenu {
+    width: 36vw;
+  }
+  
+}
+
+
+/* Small desktop screens and laptops */
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  #slidingMenu {
+    width: 40vw;
+  }
+  
+}
+
+/* Tablets and Ipads in portrait mode */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  #slidingMenu {
+    width: 50vw;
+  }
+
+}
+
+/* Tablets and Ipads in landscape mode */
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  
+  #slidingMenu {
+    width: 36vw;
+  }
+  
+}
+
+/* Mobiles in landscape mode */
+
+@media (min-width: 481px) and (max-width: 767px) {
+  
+  #slidingMenu {
+    width: 36vw;
+  }
+  
+}
