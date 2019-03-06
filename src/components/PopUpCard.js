@@ -86,8 +86,8 @@ export default class PopUpCard extends Component {
           <div className="typewriter">
             <h1>{rightBook.info.title}</h1>
           </div>
-          <span>{rightBook.info.author}</span>
-          <span>{rightBook.clue}</span>
+          <div className="card-info author"><span>{rightBook.info.author}</span></div>
+          <div className="card-info clue"><span>{rightBook.clue}</span></div>
           <button ref={element => this.captureButton = element} onClick={this.handleClickCapture}>Capture</button>
           {(this.state.showCaptureMenu ? 
           <div className="book-capture-input-container" ref={(element) => {this.captureMenu = element;}}>
@@ -101,7 +101,7 @@ export default class PopUpCard extends Component {
             <button onClick={this.handleBookCodeInput}>Enter code</button>
           </div>
           :
-          <button onClick={this.handleLoss}>Declare it lost</button>
+          <button onClick={this.handleLoss}>Lost</button>
           )}
         </div>
         : null }
