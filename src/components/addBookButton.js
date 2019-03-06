@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { withAuth } from './AuthProvider';
 import '../styles/addBookButton.css';
 import CreateBook from '../pages/CreateBook';
-import CreateBookWithCode from '../pages/CreateBookWithCode';
 import FreeBook from '../components/FreeBook';
 
 class AddBookButton extends Component {

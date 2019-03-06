@@ -7,6 +7,10 @@ class FreeBook extends Component {
 
   state={
     code: '',
+    codeShown: true,
+    storyShown: false,
+    clueShown: false,
+    buttonShown: false,
   }
 
   setCoordinates = () => {
@@ -69,30 +73,100 @@ class FreeBook extends Component {
     this.setState({[name]: value});
   }
 
+  handleClick = (event) => {
+    event.preventDefault();
+    switch(event.target.value){
+      case 'Confirm code':
+        return this.setState({
+          codeShown: !this.state.codeShown,
+          storyShown: !this.state.storyShown,
+        });
+    case 'Confirm story':
+      return this.setState({
+        storyShown: !this.state.storyShown,
+        clueShown: !this.state.clueShown,
+      });
+    case 'Confirm clue':
+      return this.setState({
+        clueShown: !this.state.clueShown,
+        buttonShown: !this.state.buttonShown,
+      });
+    default:
+      return this.state;
+    }
+  }
+
   render() {
-    const { code, clue, story } = this.state;
+    const {
+      code,
+      clue,
+      story,
+      codeShown,
+      clueShown,
+      storyShown,
+      buttonShown,
+    } = this.state;
+
     return (
       <div>
         <form className="free-book-form">
-          <input 
-            type="text" name="code" 
-            placeholder="Enter book code" 
-            value={code}
-            onChange={this.handleChange}/>
-          <input 
-            type="text" name="clue" 
-            placeholder="Enter clue" 
-            value={clue}
-            onChange={this.handleChange}/>
-          <input 
-            type="text" name="story" 
-            placeholder="Enter your story" 
-            value={story}
-            onChange={this.handleChange}/>
-          <input 
-            type="submit" 
-            value="Create"
-            onClick={this.handleFormSubmit} />
+          {(codeShown) ? 
+          <>
+            <input 
+              type="text" name="code" 
+              placeholder="Enter book code" 
+              value={code}
+              onChange={this.handleChange}/>
+            <input
+              className="formulary-next-button"
+              value="Confirm code"
+              onClick={this.handleClick}
+            />
+          </>
+          :
+          null}
+
+          {(storyShown) ? 
+          <>
+            <input 
+              type="text" name="story" 
+              placeholder="Enter your story" 
+              value={story}
+              onChange={this.handleChange}/>
+            <input
+              className="formulary-next-button"
+              value="Confirm story"
+              onClick={this.handleClick}
+            />
+          </>
+          :
+          null}
+
+          {(clueShown) ? 
+          <>
+            <input 
+              type="text" name="clue" 
+              placeholder="Enter clue" 
+              value={clue}
+              onChange={this.handleChange}/>
+            <input
+              className="formulary-next-button"
+              value="Confirm clue"
+              onClick={this.handleClick}
+            />
+          </>
+          :
+          null}
+
+          {(buttonShown) ? 
+            <input 
+              type="submit" 
+              value="Create"
+              onClick={this.handleFormSubmit} 
+            />          
+          :
+          null}
+
         </form>
       </div>
     )
