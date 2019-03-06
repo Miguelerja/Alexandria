@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import bookService from '../lib/book-service';
 import transactionService from '../lib/transaction-service';
 import { withAuth } from './AuthProvider';
+import BookCode from './BookCode';
 
 class FreeBook extends Component {
 
@@ -11,7 +12,8 @@ class FreeBook extends Component {
     storyShown: false,
     clueShown: false,
     buttonShown: false,
-  }
+    submitClicked: false,
+  };
 
   setCoordinates = () => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -62,6 +64,7 @@ class FreeBook extends Component {
           code: '',
           clue: '',
           story: '',
+          submitClicked: true,
         });
       }).catch(error => console.log(error));
 
@@ -105,70 +108,82 @@ class FreeBook extends Component {
       clueShown,
       storyShown,
       buttonShown,
+      submitClicked,
     } = this.state;
 
     return (
-      <div>
-        <form className="free-book-form">
-          {(codeShown) ? 
-          <>
-            <input 
-              type="text" name="code" 
-              placeholder="Enter book code" 
-              value={code}
-              onChange={this.handleChange}/>
-            <input
-              className="formulary-next-button"
-              value="Confirm code"
-              onClick={this.handleClick}
-            />
-          </>
-          :
-          null}
+      <>
+        {(submitClicked) ? 
+          <BookCode code={code} />
+          :          
+          <div className="create-book-form">
+            {(codeShown) ? 
+            <>
+              <input 
+                className="create-book-input text-input"
+                type="text" 
+                name="code" 
+                placeholder="Enter book code" 
+                value={code}
+                onChange={this.handleChange}/>
+              <input
+                className="formulary-next-button"
+                value="Confirm code"
+                onClick={this.handleClick}
+              />
+            </>
+            :
+            null}
 
-          {(storyShown) ? 
-          <>
-            <input 
-              type="text" name="story" 
-              placeholder="Enter your story" 
-              value={story}
-              onChange={this.handleChange}/>
-            <input
-              className="formulary-next-button"
-              value="Confirm story"
-              onClick={this.handleClick}
-            />
-          </>
-          :
-          null}
+            {(storyShown) ? 
+            <>
+              <input 
+                className="create-book-input text-input big-input"
+                type="text" 
+                name="story" 
+                placeholder="Enter your story" 
+                value={story}
+                onChange={this.handleChange}/>
+              <input
+                className="formulary-next-button"
+                value="Confirm story"
+                onClick={this.handleClick}
+              />
+            </>
+            :
+            null}
 
-          {(clueShown) ? 
-          <>
-            <input 
-              type="text" name="clue" 
-              placeholder="Enter clue" 
-              value={clue}
-              onChange={this.handleChange}/>
-            <input
-              className="formulary-next-button"
-              value="Confirm clue"
-              onClick={this.handleClick}
-            />
-          </>
-          :
-          null}
+            {(clueShown) ? 
+            <>
+              <input
+                className="create-book-input text-input big-input"
+                type="text" 
+                name="clue" 
+                placeholder="Enter clue" 
+                value={clue}
+                onChange={this.handleChange}/>
+              <input
+                className="formulary-next-button"
+                value="Confirm clue"
+                onClick={this.handleClick}
+              />
+            </>
+            :
+            null}
 
-          {(buttonShown) ? 
-            <input 
-              type="submit" 
-              value="Create"
-              onClick={this.handleFormSubmit} 
-            />          
-          :
-          null}
+            {(buttonShown) ? 
+              <input 
+                className="create-book-input text-input"
+                type="submit" 
+                value="Create"
+                onClick={this.handleFormSubmit} 
+              />          
+            :
+            null}
 
-        </form>
-      </div>
+          </div>
+          }
+      </>
     )
   }
 }
