@@ -59,13 +59,13 @@ class Menu extends Component {
           className={visible} 
           ref={(element) => {this.dropdownMenu = element;}}
         >
-          <p className="sliding-menu-username">{ username }'s Profile</p>
+          <div className="sliding-menu-username"><span>{ username } Profile</span></div>
           {(isLoading) ? <div>Loading</div> :
             <SlidingMenuBooks 
             transactions={this.state.transactions}
             />
           }
-          <p className="sliding-menu-logout" onClick={logout}>Log out</p>
+          <div className="sliding-menu-logout" onClick={logout}><span>Log out</span></div>
         </div>
       );
     } else {

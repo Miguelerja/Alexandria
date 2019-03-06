@@ -1,12 +1,12 @@
 #slidingMenu {
   width: 75vw;
   height: 100vh;
-  background-color: grey;
+  background-color: rgb(250, 244, 235);
   position: fixed;
   top: 0;
   left: 0;
   transition: transform .6s cubic-bezier(0, .52, 0, 1);
-  overflow: scroll;
+  box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .5) !important;
   z-index: 1000;
 }
  

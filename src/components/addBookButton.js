@@ -48,7 +48,7 @@ class AddBookButton extends Component {
             <div className="page3"></div>
             <div className="page2"></div>
             <div className="page1"></div>
-            <div className="front">Click here to leave a book behind</div>
+            <div className="front"><div className="addbook-button-icon">+</div></div>
           </div>
         </div>
         

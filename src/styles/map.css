@@ -5,13 +5,14 @@
 }
 
 .mapboxgl-popup-content {
-  color: #F3F3DD;
-  background-color: #1A1A1D !important;
-  border-color: #1A1A1D;
-  width: 55vw !important;
+  color: rgb(49, 53, 68);
+  background-color: #FFEBB7 !important;
+  border-color: #FFD788;
+  width: 59vw !important;
   height: 30vh !important;
   font-family: 'Oswald';
   padding: 0 !important;
+  box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .5) !important;
 }
 
 .mapboxgl-popup-tip {
