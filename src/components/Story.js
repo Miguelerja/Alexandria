@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import transactionService from '../lib/transaction-service';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft } from '@fortawesome/fontawesome-free-solid'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/fontawesome-free-solid';
 import { withAuth } from './AuthProvider';
 import StoryMap from './StoryMap';
 import '../styles/story.css';
