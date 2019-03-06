@@ -1,0 +1,20 @@
+.captured-books-container{
+  height: 60vh;
+}
+
+.no-books-message {
+  font-size: 2rem;
+}
+
+.captured-book-title {
+  font-size: 2rem;
+  text-transform: capitalize;
+  text-decoration: none;
+  color: black;
+  padding: 1rem 2rem;
+}
+
+.list{
+  list-style: none;
+  padding: 0;
+}

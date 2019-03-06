@@ -9,11 +9,11 @@
   box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .5) !important;
   z-index: 1000;
 }
- 
+
 #slidingMenu.hidden {
   transform: translate3d(-100vw, 0, 0);
 }
- 
+
 #slidingMenu.shown {
   transform: translate3d(0vw, 0, 0);
   overflow: hidden;
@@ -23,6 +23,10 @@
   height: 10vh;
   margin: 0;
   font-size: 2rem;
+  padding: 5vh 2rem;
+  text-transform: capitalize;
+  color: rgb(94, 98, 128);
+  font-weight: bold;
 }
 
 .sliding-menu-logout {

@@ -21,8 +21,6 @@ class StoryMap extends Component {
       zoom: 9,
     };
 
-    this.setPoints();
-
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
     this.map = new mapboxgl.Map(mapConfig);
