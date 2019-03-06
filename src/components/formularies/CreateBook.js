@@ -3,7 +3,6 @@ import { withAuth } from '../AuthProvider';
 import bookService from '../../lib/book-service';
 import transactionService from '../../lib/transaction-service';
 import BookCode from '../BookCode';
-import Button from './Button';
 import './styles/forms.css';
 
 class CreateBook extends Component {
@@ -128,9 +127,9 @@ class CreateBook extends Component {
                   placeholder="Book title" 
                   value={title}
                   onChange={this.handleChange}/>
-                <Button
-                  className={"formulary-next-button"}
-                  value={"Confirm title"}
+                <input
+                  className="formulary-next-button"
+                  value="Confirm title"
                   onClick={this.handleClick}
                 />
               </>
@@ -145,9 +144,9 @@ class CreateBook extends Component {
                   placeholder="Author" 
                   value={author}
                   onChange={this.handleChange}/>
-                <Button
-                  className={"formulary-next-button"}
-                  value={"Confirm author"}
+                <input
+                  className="formulary-next-button"
+                  value="Confirm author"
                   onClick={this.handleClick}
                 />
               </>
@@ -162,9 +161,9 @@ class CreateBook extends Component {
                   placeholder="Your story" 
                   value={story}
                   onChange={this.handleChange}/>
-                <Button
-                  className={"formulary-next-button"}
-                  value={"Confirm story"}
+                <input
+                  className="formulary-next-button"
+                  value="Confirm story"
                   onClick={this.handleClick}
                 />
               </>
@@ -179,9 +178,9 @@ class CreateBook extends Component {
                   placeholder="Clue" 
                   value={clue}
                   onChange={this.handleChange} />
-                <Button
-                  className={"formulary-next-button"}
-                  value={"Confirm clue"}
+                <input
+                  className="formulary-next-button"
+                  value="Confirm clue"
                   onClick={this.handleClick}
                 />
               </>
@@ -189,10 +188,10 @@ class CreateBook extends Component {
             null}
 
             {(buttonShown) ? 
-              <Button
-                className={"create-book-input create-book-button"}
-                type={"submit"} 
-                value={"Create"}
+              <input 
+                className="create-book-input create-book-button"
+                type="submit" 
+                value="Create"
                 onClick={this.handleFormSubmit} />
             : 
             null}

@@ -3,7 +3,6 @@ import bookService from '../../lib/book-service';
 import transactionService from '../../lib/transaction-service';
 import { withAuth } from '../AuthProvider';
 import BookCode from '../BookCode';
-import Button from './Button';
 import './styles/forms.css';
 
 class FreeBook extends Component {
@@ -128,10 +127,10 @@ class FreeBook extends Component {
                 placeholder="Enter book code" 
                 value={code}
                 onChange={this.handleChange}/>
-              <Button
-                className={"formulary-next-button"}
-                value={"Confirm code"}
-                handleClick={this.handleClick}
+              <input
+                className="formulary-next-button"
+                value="Confirm code"
+                onClick={this.handleClick}
               />
             </>
             :
@@ -146,9 +145,9 @@ class FreeBook extends Component {
                 placeholder="Enter your story" 
                 value={story}
                 onChange={this.handleChange}/>
-              <Button
-                className={"formulary-next-button"}
-                value={"Confirm story"}
+              <input
+                className="formulary-next-button"
+                value="Confirm story"
                 onClick={this.handleClick}
               />
             </>
@@ -164,9 +163,9 @@ class FreeBook extends Component {
                 placeholder="Enter clue" 
                 value={clue}
                 onChange={this.handleChange}/>
-              <Button
-                className={"formulary-next-button"}
-                value={"Confirm clue"}
+              <input
+                className="formulary-next-button"
+                value="Confirm clue"
                 onClick={this.handleClick}
               />
             </>
@@ -174,10 +173,10 @@ class FreeBook extends Component {
             null}
 
             {(buttonShown) ? 
-              <Button
-                className={"create-book-input text-input"}
-                type={"submit"} 
-                value={"Create"}
+              <input 
+                className="create-book-input text-input"
+                type="submit" 
+                value="Create"
                 onClick={this.handleFormSubmit} 
               />          
             :
