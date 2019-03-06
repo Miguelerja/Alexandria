@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { withAuth } from './AuthProvider';
 import '../styles/addBookButton.css';
-import CreateBook from '../pages/CreateBook';
-import FreeBook from '../components/FreeBook';
+import CreateBook from './formularies/CreateBook';
+import FreeBook from './formularies/FreeBook';
 
 class AddBookButton extends Component {
 

@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
-import bookService from '../lib/book-service';
-import transactionService from '../lib/transaction-service';
-import { withAuth } from './AuthProvider';
-import BookCode from './BookCode';
+import bookService from '../../lib/book-service';
+import transactionService from '../../lib/transaction-service';
+import { withAuth } from '../AuthProvider';
+import BookCode from '../BookCode';
+import Button from './Button';
+import './styles/forms.css';
 
 class FreeBook extends Component {
 
@@ -126,10 +128,10 @@ class FreeBook extends Component {
                 placeholder="Enter book code" 
                 value={code}
                 onChange={this.handleChange}/>
-              <input
-                className="formulary-next-button"
-                value="Confirm code"
-                onClick={this.handleClick}
+              <Button
+                className={"formulary-next-button"}
+                value={"Confirm code"}
+                handleClick={this.handleClick}
               />
             </>
             :
@@ -144,9 +146,9 @@ class FreeBook extends Component {
                 placeholder="Enter your story" 
                 value={story}
                 onChange={this.handleChange}/>
-              <input
-                className="formulary-next-button"
-                value="Confirm story"
+              <Button
+                className={"formulary-next-button"}
+                value={"Confirm story"}
                 onClick={this.handleClick}
               />
             </>
@@ -162,9 +164,9 @@ class FreeBook extends Component {
                 placeholder="Enter clue" 
                 value={clue}
                 onChange={this.handleChange}/>
-              <input
-                className="formulary-next-button"
-                value="Confirm clue"
+              <Button
+                className={"formulary-next-button"}
+                value={"Confirm clue"}
                 onClick={this.handleClick}
               />
             </>
@@ -172,10 +174,10 @@ class FreeBook extends Component {
             null}
 
             {(buttonShown) ? 
-              <input 
-                className="create-book-input text-input"
-                type="submit" 
-                value="Create"
+              <Button
+                className={"create-book-input text-input"}
+                type={"submit"} 
+                value={"Create"}
                 onClick={this.handleFormSubmit} 
               />          
             :

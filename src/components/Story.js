@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import transactionService from '../lib/transaction-service';
 import { withAuth } from './AuthProvider';
 import StoryMap from './StoryMap';
-import FreeBook from './FreeBook';
+import FreeBook from './formularies/FreeBook';
 
 class Story extends Component {
   state= {
