@@ -10,6 +10,11 @@ class CreateBook extends Component {
   state={
     code: '',
     submitClicked: false,
+    titleShown: true,
+    authorShown: false,
+    storyShown: false,
+    clueShown: false,
+    buttonShown: false,
   };
 
   handleFormSubmit = (event) => {
@@ -67,15 +72,46 @@ class CreateBook extends Component {
     this.setState({[name]: value});
   }
 
+  handleClick = (event) => {
+    event.preventDefault();
+    switch(event.target.value){
+      case 'Confirm title':
+        return this.setState({
+          titleShown: !this.state.titleShown,
+          authorShown: !this.state.authorShown,
+        });
+    case 'Confirm author':
+      return this.setState({
+        authorShown: !this.state.authorShown,
+        storyShown: !this.state.storyShown,
+      });
+    case 'Confirm story':
+      return this.setState({
+        storyShown: !this.state.storyShown,
+        clueShown: !this.state.clueShown,
+      });
+    case 'Confirm clue':
+      return this.setState({
+        clueShown: !this.state.clueShown,
+        buttonShown: !this.state.buttonShown,
+      });
+    default:
+      return this.state;
+    }
+  }
   render() {
     const {
       author,
       title,
-      synopsis,
       story,
       clue,
       code,
-      submitClicked
+      submitClicked,
+      titleShown,
+      authorShown,
+      storyShown,
+      clueShown,
+      buttonShown,
     } = this.state;
     return (
       <>
@@ -83,46 +119,94 @@ class CreateBook extends Component {
           <BookCode code={code}/>
           :
           <div className="create-book-form">
-            <input 
-              className="create-book-input text-input"
-              type="text" name="title" 
-              placeholder="Book title" 
-              value={title}
-              onChange={this.handleChange}/>
-            <input 
-              className="create-book-input text-input"
-              type="text" name="author" 
-              placeholder="Author" 
-              value={author}
-              onChange={this.handleChange}/>
-            <input 
-              className="create-book-input text-input big-input"
-              type="text" name="synopsis" 
-              placeholder="Synopsis" 
-              value={synopsis}
-              onChange={this.handleChange}/>
-            <input 
-              className="create-book-input text-input big-input"
-              type="text" name="story" 
-              placeholder="Your story" 
-              value={story}
-              onChange={this.handleChange}/>
-            <input 
-              className="create-book-input text-input big-input"
-              type="text" name="clue" 
-              placeholder="Clue" 
-              value={clue}
-              onChange={this.handleChange} />
-            <input 
-              className="create-book-input create-book-button"
-              type="submit" 
-              value="Create"
-              onClick={this.handleFormSubmit} />
+            <>
+            {(titleShown) ?
+              <>
+                <input 
+                  className="create-book-input text-input"
+                  type="text" name="title" 
+                  placeholder="Book title" 
+                  value={title}
+                  onChange={this.handleChange}/>
+                <input
+                  className="formulary-next-button"
+                  value="Confirm title"
+                  onClick={this.handleClick}
+                />
+              </>
+              : 
+              null}
+            </>
+            <>
+            {(authorShown) ? 
+              <>
+                <input 
+                  className="create-book-input text-input"
+                  type="text" name="author" 
+                  placeholder="Author" 
+                  value={author}
+                  onChange={this.handleChange}/>
+                <input
+                  className="formulary-next-button"
+                  value="Confirm author"
+                  onClick={this.handleClick}
+                />
+              </>
+              : 
+              null}
+            </>
+            <>
+            {(storyShown) ?
+              <>
+                <input 
+                  className="create-book-input text-input big-input"
+                  type="text" name="story" 
+                  placeholder="Your story" 
+                  value={story}
+                  onChange={this.handleChange}/>
+                <input
+                  className="formulary-next-button"
+                  value="Confirm story"
+                  onClick={this.handleClick}
+                />
+              </>
+              : 
+              null}
+            </>
+            <>
+            {(clueShown) ?
+              <>
+                <input 
+                  className="create-book-input text-input big-input"
+                  type="text" name="clue" 
+                  placeholder="Clue" 
+                  value={clue}
+                  onChange={this.handleChange} />
+                <input
+                  className="formulary-next-button"
+                  value="Confirm clue"
+                  onClick={this.handleClick}
+                />
+              </>
+              : 
+              null}
+            </>
+            <>
+            {(buttonShown) ? 
+              <input 
+                className="create-book-input create-book-button"
+                type="submit" 
+                value="Create"
+                onClick={this.handleFormSubmit} />
+              : 
+              null}
+            </>
           </div>
         }
       </>
     )
   }
 }
+
 
 export default withAuth(CreateBook)

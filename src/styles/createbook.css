@@ -10,8 +10,7 @@ input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
   flex-direction: column;
   position: absolute;
   z-index: 1000;
-  width: 95vw;
-  margin: 0 2.5vw;
+  width: 100vw;
   background-color: #C28F3C;
 }
 
