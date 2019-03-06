@@ -3,7 +3,7 @@ import { withAuth } from '../components/AuthProvider';
 import "../styles/slidingmenu.css";
 import Login from '../pages/Login';
 import SignUp from '../pages/Signup';
-import SlidingMenuBooks from '../components/SlidingMenuBooks';
+import CapturedBooks from './capturedBooks/CapturedBooks';
 import transactionService from '../lib/transaction-service';
 
 class Menu extends Component {
@@ -61,7 +61,7 @@ class Menu extends Component {
         >
           <div className="sliding-menu-username"><span>{ username } Profile</span></div>
           {(isLoading) ? <div>Loading</div> :
-            <SlidingMenuBooks 
+            <CapturedBooks 
             transactions={this.state.transactions}
             />
           }
@@ -74,12 +74,12 @@ class Menu extends Component {
           {this.state.hasAccount ? (
             <div>
               < Login />
-              <button onClick={this.handleClickAccount}>Create an account</button>
+              <button className="toggle-btn" onClick={this.handleClickAccount}>Create an account</button>
             </div>
           ) : (
             <div>
               < SignUp />
-              <button onClick={this.handleClickAccount}>Log In</button>
+              <button className="toggle-btn" onClick={this.handleClickAccount}>Already have an account? Log In</button>
             </div>
           )}
         </div>

@@ -1,0 +1,27 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5rem; 
+}
+
+.form input {
+  padding: 2rem;
+  font-size: 1.5rem;
+  width: 60%;
+  border-radius: 15px;
+  color: rgb(94, 98, 128);
+  margin: 1rem 8%;
+  border: none;
+}
+
+.auth-button {
+  padding: 1rem !important;
+  margin: 2rem auto !important;
+  background-color: rgb(94, 98, 128);
+  color: white !important;
+}
+
+.form input::placeholder {
+  color: rgb(94, 98, 128);
+  text-align: center;
+}
