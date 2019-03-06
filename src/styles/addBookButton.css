@@ -68,10 +68,14 @@
 
 .page5 {
   background: rgb(248, 228, 176);
+  font-size: 3rem;
+  color: rgb(94, 98, 128);
 }
 
 .page6 {
   background: #FFEBB7;
+  font-size: 3rem;
+  color: rgb(94, 98, 128);
 }
 
 .book:hover .front {

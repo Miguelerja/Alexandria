@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import transactionService from '../lib/transaction-service';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/fontawesome-free-solid'
 import { withAuth } from './AuthProvider';
 import StoryMap from './StoryMap';
+import '../styles/story.css';
 
 class Story extends Component {
   state= {
@@ -30,7 +33,7 @@ class Story extends Component {
             <StoryMap 
               transactions={bookTransactions}
             />
-            <Link to="/">Go back</Link>
+            <Link className="story-button" to="/">< FontAwesomeIcon icon={faArrowLeft}/></Link>
           </div>
           :
           <div>loading...</div>

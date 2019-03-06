@@ -32,7 +32,10 @@
 .sliding-menu-logout {
   height: 10vh;
   margin: 0;
-  font-size: 2rem;
+  font-size: 3rem;
+  color: rgb(94, 98, 128);
+  display: flex;
+  justify-content: center;
 }
 
 .toggle-btn{
