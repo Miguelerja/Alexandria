@@ -34,3 +34,10 @@
   margin: 0;
   font-size: 2rem;
 }
+
+.toggle-btn{
+  border: none;
+  background-color: transparent;
+  color: rgb(94, 98, 128);
+  margin-left: 6rem;
+}

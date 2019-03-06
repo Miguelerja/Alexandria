@@ -74,12 +74,12 @@ class Menu extends Component {
           {this.state.hasAccount ? (
             <div>
               < Login />
-              <button onClick={this.handleClickAccount}>Create an account</button>
+              <button className="toggle-btn" onClick={this.handleClickAccount}>Create an account</button>
             </div>
           ) : (
             <div>
               < SignUp />
-              <button onClick={this.handleClickAccount}>Log In</button>
+              <button className="toggle-btn" onClick={this.handleClickAccount}>Already have an account? Log In</button>
             </div>
           )}
         </div>

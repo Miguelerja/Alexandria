@@ -3,7 +3,10 @@
 }
 
 .no-books-message {
-  font-size: 2rem;
+  font-size: 1.9rem;
+  color: rgb(94, 98, 128);
+  text-align: center;
+  padding: 25% 5%;
 }
 
 .captured-book-title {
