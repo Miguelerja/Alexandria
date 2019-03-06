@@ -14,7 +14,6 @@ class CreateBook extends Component {
     authorShown: false,
     storyShown: false,
     clueShown: false,
-    buttonShown: false,
   };
 
   handleFormSubmit = (event) => {
@@ -90,11 +89,6 @@ class CreateBook extends Component {
         storyShown: !this.state.storyShown,
         clueShown: !this.state.clueShown,
       });
-    case 'Confirm clue':
-      return this.setState({
-        clueShown: !this.state.clueShown,
-        buttonShown: !this.state.buttonShown,
-      });
     default:
       return this.state;
     }
@@ -111,7 +105,6 @@ class CreateBook extends Component {
       authorShown,
       storyShown,
       clueShown,
-      buttonShown,
     } = this.state;
     return (
       <>
@@ -178,21 +171,12 @@ class CreateBook extends Component {
                   placeholder="Clue" 
                   value={clue}
                   onChange={this.handleChange} />
-                <input
-                  className="formulary-next-button"
-                  value="Confirm clue"
-                  onClick={this.handleClick}
-                />
+                <input 
+                  className="create-book-input create-book-button"
+                  type="submit" 
+                  value="Create"
+                  onClick={this.handleFormSubmit} />
               </>
-            : 
-            null}
-
-            {(buttonShown) ? 
-              <input 
-                className="create-book-input create-book-button"
-                type="submit" 
-                value="Create"
-                onClick={this.handleFormSubmit} />
             : 
             null}
           </div>
