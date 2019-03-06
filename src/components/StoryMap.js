@@ -14,13 +14,14 @@ class StoryMap extends Component {
 
   componentDidMount() {
     const { transactions } = this.props;
-
     const mapConfig = {
       container: 'map',
       style: 'mapbox://styles/ajer/cjsqedagl1fb51fnvxopap6mz',
       center: [2, 41],
       zoom: 9,
     };
+
+    this.setPoints();
 
     mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;
 
@@ -32,6 +33,7 @@ class StoryMap extends Component {
       transactions.forEach(transaction => {
         const markerDiv = document.createElement('div');
         markerDiv.className = 'marker-icon';
+
         const popup = new mapboxgl.Popup({
           closeButton: false,
           className: 'popup',
