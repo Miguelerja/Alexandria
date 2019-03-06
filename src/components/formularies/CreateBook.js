@@ -120,11 +120,12 @@ class CreateBook extends Component {
                   placeholder="Book title" 
                   value={title || ''}
                   onChange={this.handleChange}/>
-                <input
+                <button
                   className="formulary-next-button"
                   value="Confirm title"
                   onClick={this.handleClick}
-                />
+                >Confirm title
+                </button>
               </>
             : 
             null}
@@ -137,11 +138,12 @@ class CreateBook extends Component {
                   placeholder="Author" 
                   value={author || ''}
                   onChange={this.handleChange}/>
-                <input
+                <button
                   className="formulary-next-button"
                   value="Confirm author"
                   onClick={this.handleClick}
-                />
+                >Confirm author
+                </button>
               </>
             : 
             null}
@@ -154,11 +156,12 @@ class CreateBook extends Component {
                   placeholder="Your story" 
                   value={story || ''}
                   onChange={this.handleChange}/>
-                <input
+                <button
                   className="formulary-next-button"
                   value="Confirm story"
                   onClick={this.handleClick}
-                />
+                >Confirm story
+                </button>
               </>
             : 
             null}
@@ -170,12 +173,12 @@ class CreateBook extends Component {
                   type="text" name="clue" 
                   placeholder="Clue" 
                   value={clue || ''}
-                  onChange={this.handleChange} />
-                <input 
+                  onChange={this.handleChange}/>
+                <button
                   className="create-book-input create-book-button"
-                  type="submit" 
-                  value="Create"
-                  onClick={this.handleFormSubmit} />
+                  type="submit"
+                  onClick={this.handleFormSubmit} >Create
+                </button>
               </>
             : 
             null}

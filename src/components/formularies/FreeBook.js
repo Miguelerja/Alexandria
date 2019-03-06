@@ -121,11 +121,12 @@ class FreeBook extends Component {
                 placeholder="Enter book code" 
                 value={code || ''}
                 onChange={this.handleChange}/>
-              <input
+              <button
                 className="formulary-next-button"
                 value="Confirm code"
                 onClick={this.handleClick}
-              />
+              >Confirm code
+              </button>
             </>
             :
             null}
@@ -139,11 +140,12 @@ class FreeBook extends Component {
                 placeholder="Enter your story" 
                 value={story || ''}
                 onChange={this.handleChange}/>
-              <input
+              <button
                 className="formulary-next-button"
                 value="Confirm story"
                 onClick={this.handleClick}
-              />
+              >Confirm story
+              </button>
             </>
             :
             null}
@@ -157,12 +159,12 @@ class FreeBook extends Component {
                 placeholder="Enter clue" 
                 value={clue || ''}
                 onChange={this.handleChange}/>
-              <input 
+              <button
                 className="formulary-next-button"
                 type="submit" 
-                value="Create"
                 onClick={this.handleFormSubmit} 
-              /> 
+              >Create
+              </button>
             </>
             :
             null}
