@@ -3,6 +3,7 @@ import { withAuth } from './AuthProvider';
 import '../styles/addBookButton.css';
 import CreateBook from '../pages/CreateBook';
 import CreateBookWithCode from '../pages/CreateBookWithCode';
+import FreeBook from '../components/FreeBook';
 
 class AddBookButton extends Component {
 
@@ -23,12 +24,14 @@ class AddBookButton extends Component {
     this.setCoordinates();
     this.setState({
       showMenu: !this.state.showMenu,
+      showWithCodeMenu: false,
     })
   }
 
   handleClickBookWithCode = () => {
     this.setCoordinates();
     this.setState({
+      showMenu: false,
       showWithCodeMenu: !this.state.showWithCodeMenu,
     })
   }
@@ -39,7 +42,7 @@ class AddBookButton extends Component {
         <div className="book-button-container">
           <div className="book">
             <div className="back"></div>
-            <div className="page6" onClick={this.handleClick}>Leave behind a book you picked with a code</div>
+            <div className="page6" onClick={this.handleClickBookWithCode}>Leave behind a book you picked with a code</div>
             <div className="page5" onClick={this.handleClick}>📚</div>
             <div className="page4"></div>
             <div className="page3"></div>
@@ -64,7 +67,7 @@ class AddBookButton extends Component {
         {
           this.state.showWithCodeMenu
             ? (
-              < CreateBookWithCode handleClick={this.handleClickBookWithCode}
+              < FreeBook handleClick={this.handleClickBookWithCode}
                 isVisible={this.state.showWithCodeMenu}
                 coordinates={this.state.coordinates}
                 props={this.props} />
