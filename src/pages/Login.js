@@ -6,6 +6,7 @@ class Login extends Component {
   state = {
     username: "",
     password: "",
+    error: false
   }
 
   handleFormSubmit = (event) => {
@@ -17,9 +18,9 @@ class Login extends Component {
         this.props.history.push('/private')
       })
       .catch( (error) => {
-        if (error.response || error.request) {
-          alert('you might have entered something wrong');
-        }
+        this.setState({
+          error:true,
+        })
       });
   }
 
@@ -35,6 +36,7 @@ class Login extends Component {
         <input type="text" name="username" placeholder="Username" value={username || ''} onChange={this.handleChange} required />
         <input type="password" name="password" placeholder="Password" value={password || ''} onChange={this.handleChange} required />
         <input className="auth-button" type="submit" value="Login" />
+        {this.state.error && <div className="error-message">Wrong data. Try again</div>}
       </form>
     )
   }

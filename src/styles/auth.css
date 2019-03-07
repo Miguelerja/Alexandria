@@ -25,3 +25,11 @@
   color: rgb(94, 98, 128);
   text-align: center;
 }
+
+.error-message{
+  font-size: 1.5rem;
+  color: red;
+  position: absolute;
+  bottom: 10rem;
+  margin-left: 2rem;
+}

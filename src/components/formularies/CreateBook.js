@@ -159,7 +159,7 @@ class CreateBook extends Component {
 
             {(storyShown) ?
               <>
-                <input 
+                <input
                   className="create-book-input text-input big-input"
                   type="text" name="story" 
                   placeholder="Your story" 
