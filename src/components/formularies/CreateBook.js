@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { withAuth } from '../AuthProvider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/fontawesome-free-solid'
 import bookService from '../../lib/book-service';
 import transactionService from '../../lib/transaction-service';
 import BookCode from '../BookCode';
@@ -93,6 +95,8 @@ class CreateBook extends Component {
       return this.state;
     }
   }
+
+  
   render() {
     const {
       author,
@@ -111,7 +115,12 @@ class CreateBook extends Component {
         {(submitClicked) ?
           <BookCode code={code}/>
           :
-          <div className="create-book-form">
+          <div ref={(element) => {this.createBookForm = element}} className="create-book-form">
+            <button
+              className="close-bookadd-button"
+              onClick={this.props.handleFormClose}>
+                < FontAwesomeIcon icon={faTimes} />
+              </button>
             {(titleShown) ?
               <>
                 <input 
