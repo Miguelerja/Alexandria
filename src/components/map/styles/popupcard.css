@@ -98,11 +98,21 @@
 }
 
 .book-capture-input-container {
-  position: absolute;
-  padding-top: 20%;
-  width: 90%;
+  width: 100%;
+  height: 140%;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  background-color: #FFEBB7;
 }
 
-.book-capture-input-container  {
+.book-capture-input-container input {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  width: 99%;
+  height: 150%;
+}
 
+.book-capture-input-container button {
+  height: 170%;
 }
