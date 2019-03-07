@@ -37,6 +37,13 @@ class AddBookButton extends Component {
     })
   }
 
+  handleFormClose = () => {
+    this.setState({
+      showMenu: false,
+      showWithCodeMenu: false,
+    })
+  }
+
   render() {
     return (
       <>
@@ -63,6 +70,7 @@ class AddBookButton extends Component {
               < CreateBook handleClick={this.handleClick}
                   isVisible={this.state.showMenu}
                   coordinates={this.state.coordinates}
+                  handleFormClose={this.handleFormClose}
                   props={this.props} />
             )
             : (
@@ -75,6 +83,7 @@ class AddBookButton extends Component {
               < FreeBook handleClick={this.handleClickBookWithCode}
                 isVisible={this.state.showWithCodeMenu}
                 coordinates={this.state.coordinates}
+                handleFormClose={this.handleFormClose}
                 props={this.props} />
             )
             : (

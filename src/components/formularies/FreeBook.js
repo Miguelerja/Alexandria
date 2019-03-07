@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/fontawesome-free-solid';
 import bookService from '../../lib/book-service';
 import transactionService from '../../lib/transaction-service';
 import { withAuth } from '../AuthProvider';
@@ -111,7 +113,12 @@ class FreeBook extends Component {
         {(submitClicked) ? 
           <BookCode code={code} />
           :          
-          <div className="create-book-form">
+          <div ref={(element) => {this.dropdownMenu = element}} className="create-book-form">
+            <button 
+              className="close-bookadd-button"
+              onClick={this.props.handleFormClose}>
+                < FontAwesomeIcon icon={faTimes} />
+            </button>
             {(codeShown) ? 
             <>
               <input 
