@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt } from '@fortawesome/fontawesome-free-solid';
 import { withAuth } from '../components/AuthProvider';
 import "../styles/slidingmenu.css";
 import Login from '../pages/Login';
@@ -65,7 +67,9 @@ class Menu extends Component {
             transactions={this.state.transactions}
             />
           }
-          <div className="sliding-menu-logout" onClick={logout}><span>Log out</span></div>
+          <div className="sliding-menu-logout" onClick={logout}>
+            <span><FontAwesomeIcon icon={faSignOutAlt} /></span>
+          </div>
         </div>
       );
     } else {

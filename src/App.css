@@ -5,3 +5,27 @@
 .map-container{
   height: 100vh;
 }
+
+/* Media queries */
+
+@media (min-width: 1281px) {
+
+  #slidingMenu {
+    width: 40vw;
+  }
+
+  .book-button-container {
+    margin-left: 84vw;
+    margin-top: 64vh;
+  }
+  
+  .book {
+    height: 15rem;
+  }
+  
+  .front, .back, .page1, .page2, .page3, .page4, .page5, .page6 {
+    width: 10rem;
+  }
+  
+  
+}

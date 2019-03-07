@@ -102,15 +102,15 @@ class Map extends Component {
     const nodeList = [...this.state.nodeList];
     const portal = (nodeList.length > 0) ? nodeList.map((node, i) =>
       (
-        <PopUpPortal key={i} node={node}>
-          <PopUpCard node={node} {...this.props} /> 
+        <PopUpPortal key={ i } node={ node }>
+          <PopUpCard node={ node } { ...this.props } /> 
         </PopUpPortal>
       )
     ) :
     null;
 
     return <div>
-      <PrivateRoute component={addBookButton} />
+      <PrivateRoute component={ addBookButton } />
       <div className='map' id='map'></div>
       {portal}
     </div>

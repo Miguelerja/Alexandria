@@ -16,6 +16,7 @@ input:focus:-ms-input-placeholder { color:transparent; } /* IE 10+ */
   height: 55vh;
   margin-left: 5vw;
   border-radius: 5%;
+  box-shadow: 0 1em 3em 0 rgba(0, 0, 0, .2);
 }
 
 .create-book-input{

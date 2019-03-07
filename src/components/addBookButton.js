@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { withAuth } from './AuthProvider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBookmark, faBook } from '@fortawesome/fontawesome-free-solid'
 import '../styles/addBookButton.css';
 import CreateBook from './formularies/CreateBook';
 import FreeBook from './formularies/FreeBook';
@@ -41,8 +43,12 @@ class AddBookButton extends Component {
         <div className="book-button-container">
           <div className="book">
             <div className="back"></div>
-            <div className="page6" onClick={this.handleClickBookWithCode}>Leave behind a book you picked with a code</div>
-            <div className="page5" onClick={this.handleClick}><span role="img" aria-label="emoji book">📚</span></div>
+            <div className="page6" onClick={this.handleClickBookWithCode}>
+              < FontAwesomeIcon icon={faBookmark} />
+            </div>
+            <div className="page5" onClick={this.handleClick}>
+              < FontAwesomeIcon icon={faBook} />
+            </div>
             <div className="page4"></div>
             <div className="page3"></div>
             <div className="page2"></div>
