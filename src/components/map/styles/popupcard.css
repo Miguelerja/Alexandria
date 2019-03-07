@@ -26,7 +26,8 @@
 }
 
 .typewriter h1 {
-  color: rgb(49, 53, 68);
+  color: rgb(94,98,128);
+  padding: 0.2rem;
   display: inline-block;
   margin-inline-end: 0;
   margin-inline-start: 0;
@@ -115,4 +116,9 @@
 
 .book-capture-input-container button {
   height: 170%;
+}
+
+.card-info span{
+  font-size: 1.3rem;
+  text-transform: capitalize;
 }
