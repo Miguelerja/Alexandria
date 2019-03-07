@@ -18,9 +18,10 @@ class Menu extends Component {
   transactionsHandler = () => {
     const userThatHunts = this.props.user._id;
     transactionService.findUser(userThatHunts)
-      .then((transactions) => {
+    .then((transactions) => {
+        const transactionsUser = transactions.filter(transaction => transaction.userThatHunts === userThatHunts);
         this.setState({
-          transactions: transactions,
+          transactions: transactionsUser,
         });
       })
       .catch(error => console.log(error));
@@ -44,7 +45,6 @@ class Menu extends Component {
   }
 
   render() {
-
     let visible = "hidden";
     const { isLogged, user, logout } = this.props;
     const { username } = user;
