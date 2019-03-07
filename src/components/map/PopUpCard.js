@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import bookService from '../lib/book-service';
-import '../styles/popupcard.css';
-import transactionService from '../lib/transaction-service';
+import bookService from '../../lib/book-service';
+import './styles/popupcard.css';
+import transactionService from '../../lib/transaction-service';
 
 /* Component that gets passed through Map Portal to insert inner popup content
 and functionality */

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import mapboxgl from 'mapbox-gl';
-import { withAuth } from './AuthProvider';
-import '../styles/storyMap.css';
+import { withAuth } from '../providers/AuthProvider';
+import './styles/storyMap.css';
 
 class StoryMap extends Component {
 

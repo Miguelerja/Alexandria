@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { withAuth } from '../components/AuthProvider';
+import { withAuth } from '../components/providers/AuthProvider';
 
 const PrivateRoute = ({ component: Component, isLogged, ...rest }) => {
   // console.log({ component: Component, user, ...rest }) 

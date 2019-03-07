@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withAuth } from '../components/AuthProvider';
+import { withAuth } from '../components/providers/AuthProvider';
 import '../styles/auth.css';
 
 

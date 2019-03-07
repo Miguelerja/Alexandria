@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import {Switch} from 'react-router-dom'
-import PrivateRoute from './components/PrivateRoute';
-import AnonRoute from './components/AnonRoute';
-import Navbar from './components/Navbar';
+import PrivateRoute from './pages/PrivateRoute';
+import AnonRoute from './pages/AnonRoute';
+import Navbar from './components/navbar/Navbar';
 import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import AuthProvider from './components/AuthProvider';
-import Map from './components/Map';
-import Story from './components/Story';
-import BookProvider from './components/BookProvider';
+import AuthProvider from './components/providers/AuthProvider';
+import Map from './components/map/Map';
+import Story from './components/story/Story';
+import BookProvider from './components/providers/BookProvider';
 
 class App extends Component {
   render() {

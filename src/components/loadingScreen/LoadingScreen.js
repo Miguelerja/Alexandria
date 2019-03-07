@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../styles/loadingscreen.css';
+import './styles/loadingscreen.css';
 
 export default class LoadingScreen extends Component {
   render() {

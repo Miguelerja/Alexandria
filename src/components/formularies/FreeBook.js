@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/fontawesome-free-solid';
 import bookService from '../../lib/book-service';
 import transactionService from '../../lib/transaction-service';
-import { withAuth } from '../AuthProvider';
-import BookCode from '../BookCode';
+import { withAuth } from '../providers/AuthProvider';
+import BookCode from './BookCode';
 import './styles/forms.css';
 
 class FreeBook extends Component {

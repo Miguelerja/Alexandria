@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import bookService from '../lib/book-service'
+import bookService from '../../lib/book-service'
 import { withRouter } from "react-router";
-import LoadingScreen from './LoadingScreen';
+import LoadingScreen from '../loadingScreen/LoadingScreen';
 
 /* HOC that gives book context to routes and components that require it */
 

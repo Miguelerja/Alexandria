@@ -1,5 +1,5 @@
 import mapboxgl from 'mapbox-gl';
-import '../styles/map.css';
+import '../components/map/styles/map.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
 /* Popup creator helper function */

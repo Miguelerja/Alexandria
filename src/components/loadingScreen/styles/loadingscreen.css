@@ -1,5 +1,5 @@
 .background-image-loading {
-  background-image: url('../images/LoadingMap.png');
+  background-image: url('/images/LoadingMap.png');
   filter: blur(5px);
   -webkit-filter: blur(8px);
   width: 100vw;

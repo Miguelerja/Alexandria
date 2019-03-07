@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/fontawesome-free-solid';
-import { withAuth } from '../components/AuthProvider';
-import "../styles/slidingmenu.css";
-import Login from '../pages/Login';
-import SignUp from '../pages/Signup';
-import CapturedBooks from './capturedBooks/CapturedBooks';
-import transactionService from '../lib/transaction-service';
+import { withAuth } from '../providers/AuthProvider';
+import "./styles/slidingmenu.css";
+import Login from '../../pages/Login';
+import SignUp from '../../pages/Signup';
+import CapturedBooks from '../capturedBooks/CapturedBooks';
+import transactionService from '../../lib/transaction-service';
 
 class Menu extends Component {
   state = {

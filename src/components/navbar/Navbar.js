@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { withAuth } from '../components/AuthProvider';
-import '../styles/navbar.css';
-import MenuButton from '../components/MenuButton';
-import SlidingMenu from '../components/SlidingMenu';
-import LoadingScreen from '../components/LoadingScreen';
+import { withAuth } from '../providers/AuthProvider';
+import './styles/navbar.css';
+import MenuButton from './MenuButton';
+import SlidingMenu from './SlidingMenu';
+import LoadingScreen from '../loadingScreen/LoadingScreen';
 
 class Navbar extends Component {
 

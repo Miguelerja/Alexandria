@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import authService from '../lib/auth-service';
-import LoadingScreen from './LoadingScreen';
+import authService from '../../lib/auth-service';
+import LoadingScreen from '../loadingScreen/LoadingScreen';
 
 
 export const AuthContext = React.createContext(

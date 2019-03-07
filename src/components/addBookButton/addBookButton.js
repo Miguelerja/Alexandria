@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { withAuth } from './AuthProvider';
+import { withAuth } from '../providers/AuthProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookmark, faBook } from '@fortawesome/fontawesome-free-solid'
-import '../styles/addBookButton.css';
-import CreateBook from './formularies/CreateBook';
-import FreeBook from './formularies/FreeBook';
+import './Styles/addBookButton.css';
+import CreateBook from '../formularies/CreateBook';
+import FreeBook from '../formularies/FreeBook';
 
 class AddBookButton extends Component {
 

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import mapboxgl from 'mapbox-gl';
-import '../styles/map.css';
+import './styles/map.css';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { withAuth } from './AuthProvider';
-import { withBooks } from './BookProvider';
-import { popUpCreator } from '../functions/popUpCreator';
+import { withAuth } from '../providers/AuthProvider';
+import { withBooks } from '../providers/BookProvider';
+import { popUpCreator } from '../../functions/popUpCreator';
 import ReactDOM from 'react-dom';
 import PopUpCard from './PopUpCard';
-import AddBookButton from './addBookButton';
+import AddBookButton from '../addBookButton/addBookButton';
 
 class Map extends Component {
   state = {

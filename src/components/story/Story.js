@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import transactionService from '../lib/transaction-service';
+import transactionService from '../../lib/transaction-service';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/fontawesome-free-solid';
-import { withAuth } from './AuthProvider';
+import { withAuth } from '../providers/AuthProvider';
 import StoryMap from './StoryMap';
-import '../styles/story.css';
+import './styles/story.css';
 
 class Story extends Component {
   state= {
