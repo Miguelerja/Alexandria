@@ -13,7 +13,7 @@ class StoryMap extends Component {
   });
 
   componentDidMount() {
-    const { transactions } = this.props;
+    const { transactions, bookId } = this.props;
     const mapConfig = {
       container: 'map',
       style: 'mapbox://styles/ajer/cjsqedagl1fb51fnvxopap6mz',
@@ -29,22 +29,24 @@ class StoryMap extends Component {
       this.map.addControl(this.geolocate);
 
       transactions.forEach(transaction => {
-        const markerDiv = document.createElement('div');
-        markerDiv.className = 'marker-icon';
-
-        const popup = new mapboxgl.Popup({
-          closeButton: false,
-          className: 'popup',
-        })
-          .setHTML(`<p>${transaction.story}</p>`);
-      
-        const marker = new mapboxgl.Marker({
-          element: markerDiv,
-        })
-          .setLngLat(transaction.location.coordinates)
-          .setPopup(popup);
-      
-        marker.addTo(this.map);
+        if (transaction.bookId === bookId) {
+          const markerDiv = document.createElement('div');
+          markerDiv.className = 'marker-icon';
+  
+          const popup = new mapboxgl.Popup({
+            closeButton: false,
+            className: 'popup',
+          })
+            .setHTML(`<p>${transaction.story}</p>`);
+        
+          const marker = new mapboxgl.Marker({
+            element: markerDiv,
+          })
+            .setLngLat(transaction.location.coordinates)
+            .setPopup(popup);
+        
+          marker.addTo(this.map);
+        }
       });
     });
   };

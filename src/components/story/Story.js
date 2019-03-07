@@ -26,11 +26,13 @@ class Story extends Component {
 
   render() {
     const {loaded, bookTransactions} = this.state;
+    const bookId = this.props.match.params.id;
     return (
       <div>
         {(loaded ?        
           <div>
-            <StoryMap 
+            <StoryMap
+              bookId ={bookId}
               transactions={bookTransactions}
             />
             <Link className="story-button" to="/">< FontAwesomeIcon icon={faArrowLeft}/></Link>
