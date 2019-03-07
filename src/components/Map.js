@@ -7,8 +7,7 @@ import { withBooks } from './BookProvider';
 import { popUpCreator } from '../functions/popUpCreator';
 import ReactDOM from 'react-dom';
 import PopUpCard from './PopUpCard';
-import addBookButton from './addBookButton';
-import PrivateRoute from './PrivateRoute';
+import AddBookButton from './addBookButton';
 
 class Map extends Component {
   state = {
@@ -110,7 +109,7 @@ class Map extends Component {
     null;
 
     return <div>
-      <PrivateRoute component={ addBookButton } />
+      < AddBookButton {...this.props} />
       <div className='map' id='map'></div>
       {portal}
     </div>
