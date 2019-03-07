@@ -18,15 +18,21 @@ class Login extends Component {
         this.props.history.push('/private')
       })
       .catch( (error) => {
-        this.setState({
-          error:true,
-        })
+        if (this.dismounted !== 'dismounted' ){
+          this.setState({
+            error:true,
+          })
+        }
       });
   }
 
   handleChange = (event) => {  
     const {name, value} = event.target;
     this.setState({[name]: value});
+  }
+
+  componentWillUnmount() {
+    this.dismounted = 'dismounted';
   }
 
   render() {
