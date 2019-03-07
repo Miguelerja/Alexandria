@@ -9,15 +9,16 @@ class CapturedBooks extends Component {
     const { transactions } = this.props;
     return transactions.map(transaction => {
       return (
-        <li>
+        <div
+          className="list-container"
+          key={transaction.bookId}>
           <Link
             className="captured-book-title"
-            key={transaction.bookId}
             to={`/book/${transaction.bookId}`}
           >
             {transaction.bookTitle}
           </Link>
-        </li>
+        </div>
         )
     })
   }
@@ -27,9 +28,7 @@ class CapturedBooks extends Component {
     return (
       <div className="captured-books-container">
         {(transactions.length > 0) ? 
-          <ul className="list">
-            {this.listTransactionBooks()}
-          </ul>
+          this.listTransactionBooks()
         :
         <h2 className="no-books-message">
           You haven't found any book yet. Check the map and go get them!

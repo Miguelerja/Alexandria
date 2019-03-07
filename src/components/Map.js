@@ -38,7 +38,7 @@ class Map extends Component {
     const mapConfig = {
       container: 'map',
       style: 'mapbox://styles/ajer/cjsqedagl1fb51fnvxopap6mz',
-      center: [2, 41],
+      center: [2.1941694, 41.99223],
       zoom: 9,
     };
 

@@ -14,10 +14,13 @@
   text-transform: capitalize;
   text-decoration: none;
   color: black;
-  padding: 1rem 2rem;
 }
 
 .list{
   list-style: none;
   padding: 0;
+}
+
+.list-container{
+  padding: 1rem 2rem;
 }
