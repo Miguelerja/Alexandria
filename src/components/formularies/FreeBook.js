@@ -68,7 +68,9 @@ class FreeBook extends Component {
           story: '',
           submitClicked: true,
         });
-      }).catch(error => console.log(error));
+      })
+      .then(() => this.props.updateBooks())
+      .catch(error => console.log(error));
 
     event.preventDefault();
   };

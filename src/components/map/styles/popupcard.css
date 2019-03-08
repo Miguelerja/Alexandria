@@ -109,10 +109,13 @@
 .book-capture-input-container input {
   grid-column-start: 1;
   grid-column-end: 3;
-  width: 99%;
-  height: 150%;
+  grid-row-end: 4;
+  width: 97%;
+  height: 355%;
 }
 
 .book-capture-input-container button {
-  height: 170%;
+  height: 196%;
+  width: 50%;
+  margin-left: 50%;
 }

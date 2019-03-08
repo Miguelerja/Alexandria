@@ -56,6 +56,12 @@ class Map extends Component {
       });
     });
 
+    this.map.loaded((isloaded) => {
+      if (isloaded) {
+        console.log('loaded');
+      }
+    })
+
     /* Search the HTML DOM for mapbox popup nodes for Portal setup using MutationObserver. 
     Push the last created popup node into array in state */
 

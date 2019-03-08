@@ -63,9 +63,7 @@ class Navbar extends Component {
                 receiveElement={this.receiveElement} props={this.props} />
             )
             : (
-              < SlidingMenu handleClick={this.handleClick} 
-                isVisible={this.state.showMenu}
-                receiveElement={this.receiveElement} props={this.props} />
+              null
             )
         }
         {

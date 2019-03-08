@@ -50,7 +50,6 @@ class CreateBook extends Component {
         };
 
         transactionService.create(transaction)
-          .then(transaction => console.log(transaction))
           .catch(error => console.log(error));
 
         this.setState({
@@ -63,7 +62,9 @@ class CreateBook extends Component {
           code: book.response.code,
           submitClicked: true,
         });
-      }).catch(error => console.log(error));
+      })
+      .then(() => this.props.updateBooks())
+      .catch(error => console.log(error));
     
     event.preventDefault();
   };

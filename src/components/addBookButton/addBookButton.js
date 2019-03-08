@@ -71,7 +71,7 @@ class AddBookButton extends Component {
                   isVisible={this.state.showMenu}
                   coordinates={this.state.coordinates}
                   handleFormClose={this.handleFormClose}
-                  props={this.props} />
+                  updateBooks={this.props.updateBooks} />
             )
             : (
               null
@@ -84,7 +84,7 @@ class AddBookButton extends Component {
                 isVisible={this.state.showWithCodeMenu}
                 coordinates={this.state.coordinates}
                 handleFormClose={this.handleFormClose}
-                props={this.props} />
+                updateBooks={this.props.updateBooks} />
             )
             : (
               null
