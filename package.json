@@ -15,7 +15,7 @@
     "leaflet": "^1.4.0",
     "mapbox-gl": "^0.53.1",
     "npm": "^6.8.0",
-    "react": "^16.8.3",
+    "react": "^16.11.0",
     "react-dom": "^16.8.3",
     "react-mapbox-wrapper": "^2.2.0",
     "react-router-dom": "^4.3.1",
